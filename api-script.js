@@ -96,13 +96,26 @@ function bookDisplayLimit() {
 
 //::::::::::: display book ::::::::::::::::
 function displayBook(number) {
-  const bookImgLink = booksArray.items[number].volumeInfo.imageLinks.thumbnail;
-  const bookImage = document.createElement("img");
-  bookImage.src = bookImgLink;
-  // bookImage.width = 400;
+  // get book image link
+  const bookImgLink =
+    booksArray.items[number].volumeInfo.imageLinks.smallThumbnail;
 
-  const cardBody = document.querySelector(".card-body" + number);
-  cardBody.appendChild(bookImage);
+  // creating div to hold the books suggestions
+  const bookDiv = document.createElement("div");
+  bookDiv.setAttribute("style", "display: inline-block");
+  bookDiv.setAttribute("class", "me-2 col-4");
+
+  // instead of creating elements one by one
+  // create a string literal to hold all elements needed
+  bookDiv.innerHTML = `
+  <img src=${bookImgLink}></img>
+  <p>${booksArray.items[number].volumeInfo.title}</p>
+  <p>Category: ${booksArray.items[number].volumeInfo.categories}</p>
+  `;
+
+  // append book inside the book suggestion row
+  const cardBody = document.querySelector(".book-suggestion-row");
+  cardBody.appendChild(bookDiv);
 }
 
 // todo:
