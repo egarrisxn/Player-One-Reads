@@ -2,7 +2,7 @@
 //::::::::::::: global variables ::::::::::::::::
 const booksSuggestionNum = 3;
 let booksData;
-let booksArray;
+let booksArray = [];
 
 //::::::::::::: API Keys ::::::::::::::::
 const rawgApiKey = "cc02a6786cd34fc58a69576e666470c0";
@@ -74,20 +74,26 @@ function bookApiCall(title) {
     })
     .then(function (data) {
       console.log(data);
-      booksArray = data;
+      // only add books that have a category association
+      data.items.forEach((item) => {
+        if (item.volumeInfo.categories && item.volumeInfo.imageLinks) {
+          booksArray.push(item);
+        }
+      });
+
       bookDisplayLimit();
     });
 }
 
 //::::::::::: limit book selection ::::::::::::::::
 function bookDisplayLimit() {
-  if (booksArray.totalItems === 0) {
+  if (booksArray.length === 0) {
     alert("No books suggestions for that title");
-  } else if (booksArray.totalItems > booksSuggestionNum) {
+  } else if (booksArray.length > booksSuggestionNum) {
     for (let i = 0; i < booksSuggestionNum; i++) {
       displayBook(i);
     }
-  } else if (booksArray.totalItems <= booksSuggestionNum) {
+  } else if (booksArray.length <= booksSuggestionNum) {
     for (let i = 0; i < booksArray.items.length; i++) {
       displayBook(i);
     }
@@ -97,8 +103,7 @@ function bookDisplayLimit() {
 //::::::::::: display book ::::::::::::::::
 function displayBook(number) {
   // get book image link
-  const bookImgLink =
-    booksArray.items[number].volumeInfo.imageLinks.smallThumbnail;
+  const bookImgLink = booksArray[number].volumeInfo.imageLinks.thumbnail;
 
   // creating div to hold the books suggestions
   const bookDiv = document.createElement("div");
@@ -109,8 +114,8 @@ function displayBook(number) {
   // create a string literal to hold all elements needed
   bookDiv.innerHTML = `
   <img src=${bookImgLink}></img>
-  <p>${booksArray.items[number].volumeInfo.title}</p>
-  <p>Category: ${booksArray.items[number].volumeInfo.categories}</p>
+  <p>${booksArray[number].volumeInfo.title}</p>
+  <p>Category: ${booksArray[number].volumeInfo.categories}</p>
   `;
 
   // append book inside the book suggestion row
