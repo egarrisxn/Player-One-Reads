@@ -21,14 +21,9 @@ searchButton.addEventListener("click", function (e) {
 function buildBooksCategories() {
   booksArray.forEach( book => {
     const bookCategory = book.volumeInfo.categories[0];
-    if (booksArray.includes(bookCategory)){
-      console.log(bookCategory);
-    }else {
       booksCategories.add(bookCategory);
-    }
-    //booksCategories.push(bookCategory);
-  })
-  console.log(booksCategories);
+    })
+  console.log(booksCategories); //TO BE REMOVED LATER
 }
 
 
