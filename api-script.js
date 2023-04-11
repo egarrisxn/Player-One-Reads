@@ -53,35 +53,41 @@ function extractGameData(gameObject) {
 
 //::::::::::: make call to GoogleBooks API ::::::::::::::::
 function bookApiCall(title) {
-  const googleBooksApi =
-    "https://www.googleapis.com/books/v1/volumes?key=" +
-    googleBooksKey +
-    "&orderBy=relevance&q=" +
-    title +
-    "subject:games";
-
+  console.log("Game title:", title);
+  const googleBooksApi = `https://www.googleapis.com/books/v1/volumes?key=${googleBooksKey}&orderBy=relevance&projection=full&q=${title}`;
   fetch(googleBooksApi)
     .then(function (response) {
       const data = response.json();
-      // console.log(data);
       return data;
     })
     .then(function (data) {
-      //   extractGameData(data);
       console.log(data);
-      booksToDisplay(data);
+      booksToFilter(data);
     });
 }
 
-//::::::::::: select books to display ::::::::::::::::
-function booksToDisplay(booksArr) {
-  for (let i = 0; i < 3; i++) {
-    const bookImgLink = booksArr.items[i].volumeInfo.imageLinks.thumbnail;
-    const bookImage = document.createElement("img");
-    bookImage.src = bookImgLink;
-    // bookImage.width = 400;
-
-    const cardBody = document.querySelector(".card-body" + i);
-    cardBody.appendChild(bookImage);
+//::::::::::: select books to filter ::::::::::::::::
+function booksToFilter(booksArr) {
+  if (booksArr.totalItems === 0) {
+    alert("No books suggestions for that title");
+  } else if (booksArr.totalItems > 3) {
+    for (let i = 0; i < 3; i++) {
+      booksToDisplay(booksArr, i);
+    }
+  } else if (booksArr.totalItems <= 3) {
+    for (let i = 0; i < booksArr.items.length; i++) {
+      booksToDisplay(booksArr, i);
+    }
   }
+}
+
+//::::::::::: select books to display ::::::::::::::::
+function booksToDisplay(array, number) {
+  const bookImgLink = array.items[number].volumeInfo.imageLinks.thumbnail;
+  const bookImage = document.createElement("img");
+  bookImage.src = bookImgLink;
+  // bookImage.width = 400;
+
+  const cardBody = document.querySelector(".card-body" + number);
+  cardBody.appendChild(bookImage);
 }
