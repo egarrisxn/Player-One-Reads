@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+
+                <!-- :::: Our logo and link to homepage will replace this :::: -->
+                <div class="navbar-brand">
+                  <a class="navbar-item p-0" href="./recs-page.html">
+                    <img src="./assets/images/player-one-logo.jpg">
+                  </a>
+              
+                  <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                  </a>
+                </div>
+              
+        </nav>
+    </header>
+    <main>
+        <section class="columns is-flex-direction-row">
+
+            <!-- :::: SEARCH FIELD :::: -->
+            <div class="field column is-6">
+                <form class="control">
+                <input  id="user-search-input" class="input" type="text" placeholder="Enter Video Game">
+                <div class="control">
+                    <button id="search-btn" class="button">Submit</button>
+                </div>
+                </form>
+            </div>
+
+            <!-- :::: SEARCHED VIDEO GAME :::: -->
+            <!-- Hidden until searched -->
+            <div class="card column is-6">
+                <div class="card-content">
+                    <div class="content">
+                        Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta
+                        gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
+                        ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="book-suggestion-row" class="columns">
+            <!-- :::: BOOK RECOMMENDATIONS :::: -->
+           <div class="card column is-4">
+            <h1> Book 1 Rec</h1>
+           </div>
+           <div class="card column is-4">
+            <h1> Book 1 Rec</h1>
+           </div>
+           <div class="card column is-4">
+            <h1> Book 1 Rec</h1>
+           </div>
+        </section>
+    </main>
+</body>
+
+</html>
