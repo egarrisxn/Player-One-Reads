@@ -16,14 +16,19 @@
     </header>
     <main>
         <section class="columns">
-            <form class="field column is-6">
+
+            <!-- :::: SEARCH FIELD :::: -->
+            <div class="field column is-6">
+                <form class="control">
+                <input class="input" type="text" placeholder="Enter Video Game">
                 <div class="control">
-                    <input class="input" type="text" placeholder="Enter Video Game">
-                    <div class="control">
-                        <button class="button">Submit</button>
-                    </div>
+                    <button class="button">Submit</button>
                 </div>
-            </form>
+                </form>
+            </div>
+
+            <!-- :::: SEARCHED VIDEO GAME :::: -->
+            <!-- Hidden until searched -->
             <div class="card column is-6">
                 <div class="card-content">
                     <div class="content">
@@ -33,7 +38,19 @@
                     </div>
                 </div>
             </div>
-            </div>
+        </section>
+
+        <section class="columns">
+            <!-- :::: BOOK RECOMMENDATIONS :::: -->
+           <div class="card column is-4">
+            <h1> Book 1 Rec</h1>
+           </div>
+           <div class="card column is-4">
+            <h1> Book 1 Rec</h1>
+           </div>
+           <div class="card column is-4">
+            <h1> Book 1 Rec</h1>
+           </div>
         </section>
     </main>
 </body>
