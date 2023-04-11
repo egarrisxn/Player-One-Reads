@@ -54,7 +54,7 @@ function extractGameData(gameObject) {
 //::::::::::: make call to GoogleBooks API ::::::::::::::::
 function bookApiCall(title) {
   console.log("Game title:", title);
-  const googleBooksApi = `https://www.googleapis.com/books/v1/volumes?key=${googleBooksKey}&orderBy=relevance&projection=full&q=${title}`;
+  const googleBooksApi = `https://www.googleapis.com/books/v1/volumes?key=${googleBooksKey}&orderBy=relevance&projection=full&maxResults=40&q=${title}`;
   fetch(googleBooksApi)
     .then(function (response) {
       const data = response.json();
@@ -62,27 +62,27 @@ function bookApiCall(title) {
     })
     .then(function (data) {
       console.log(data);
-      booksToFilter(data);
+      bookDisplayLimit(data);
     });
 }
 
-//::::::::::: select books to filter ::::::::::::::::
-function booksToFilter(booksArr) {
+//::::::::::: limit book selection ::::::::::::::::
+function bookDisplayLimit(booksArr) {
   if (booksArr.totalItems === 0) {
     alert("No books suggestions for that title");
   } else if (booksArr.totalItems > 3) {
     for (let i = 0; i < 3; i++) {
-      booksToDisplay(booksArr, i);
+      displayBook(booksArr, i);
     }
   } else if (booksArr.totalItems <= 3) {
     for (let i = 0; i < booksArr.items.length; i++) {
-      booksToDisplay(booksArr, i);
+      displayBook(booksArr, i);
     }
   }
 }
 
-//::::::::::: select books to display ::::::::::::::::
-function booksToDisplay(array, number) {
+//::::::::::: display book ::::::::::::::::
+function displayBook(array, number) {
   const bookImgLink = array.items[number].volumeInfo.imageLinks.thumbnail;
   const bookImage = document.createElement("img");
   bookImage.src = bookImgLink;
