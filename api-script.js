@@ -9,10 +9,10 @@ const rawgApiKey = "cc02a6786cd34fc58a69576e666470c0";
 const googleBooksKey = "AIzaSyAxqjUh8dmM18Wp0Vs0PdaJ_rMbTt6QUdo";
 
 //::::::::::: search button event listener ::::::::::::::::
-const searchButton = document.querySelector(".search-btn");
+const searchButton = document.querySelector("#search-btn");
 searchButton.addEventListener("click", function (e) {
   e.preventDefault();
-  const userInput = document.querySelector(".user-search-input").value;
+  const userInput = document.querySelector("#city-input").value;
   fetchGameData(userInput);
 });
 
@@ -119,7 +119,7 @@ function displayBook(number) {
   `;
 
   // append book inside the book suggestion row
-  const cardBody = document.querySelector(".book-suggestion-row");
+  const cardBody = document.querySelector("#book-suggestion-row");
   cardBody.appendChild(bookDiv);
 }
 
