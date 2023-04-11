@@ -1,0 +1,70 @@
+.navbar {
+    background-color: #252525;
+}
+
+
+.section {
+    background-color: #252525;
+    padding: 0rem 1rem;
+
+}
+
+body {
+
+    color: whitesmoke;
+    background-color: #E09F3E;
+    background-image: linear-gradient(#e5b23d, #e09f3e);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.column {
+    font-size: 53px;
+    text-shadow: 2px 2px 5px gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    padding-left: 250px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+}
+
+button {
+    appearance: auto;
+    writing-mode: horizontal-tb !important;
+    
+    font-size: 20px;
+    font-family:inherit;
+    text-rendering: auto;
+    color: buttontext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: pointer;
+    box-sizing: border-box;
+    background-color: buttonface;
+    margin: -1em;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
