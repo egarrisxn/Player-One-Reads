@@ -3,7 +3,8 @@
 const booksSuggestionNum = 3;
 let booksData;
 let booksArray = [];
-//2
+let booksCategories = new Set([]);
+
 //::::::::::::: API Keys ::::::::::::::::
 const rawgApiKey = "cc02a6786cd34fc58a69576e666470c0";
 const googleBooksKey = "AIzaSyAxqjUh8dmM18Wp0Vs0PdaJ_rMbTt6QUdo";
@@ -15,6 +16,22 @@ searchButton.addEventListener("click", function (e) {
   const userInput = document.querySelector(".user-search-input").value;
   fetchGameData(userInput);
 });
+
+//:::::::::::: creating book category array :::::::::::::::
+function buildBooksCategories() {
+  booksArray.forEach( book => {
+    const bookCategory = book.volumeInfo.categories[0];
+    if (booksArray.includes(bookCategory)){
+      console.log(bookCategory);
+    }else {
+      booksCategories.add(bookCategory);
+    }
+    //booksCategories.push(bookCategory);
+  })
+  console.log(booksCategories);
+}
+
+
 
 //::::::::::: make call to RAWG API ::::::::::::::::
 function fetchGameData(gameTitle) {
@@ -110,6 +127,7 @@ function displayBook(number) {
   bookDiv.setAttribute("style", "display: inline-block");
   bookDiv.setAttribute("class", "me-2 col-4");
 
+
   // instead of creating elements one by one
   // create a string literal to hold all elements needed
   bookDiv.innerHTML = `
@@ -121,6 +139,7 @@ function displayBook(number) {
   // append book inside the book suggestion row
   const cardBody = document.querySelector(".book-suggestion-row");
   cardBody.appendChild(bookDiv);
+  buildBooksCategories();
 }
 
 // todo:
