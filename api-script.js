@@ -3,7 +3,7 @@
 const booksSuggestionNum = 3;
 let booksData;
 let booksArray = [];
-
+//2
 //::::::::::::: API Keys ::::::::::::::::
 const rawgApiKey = "cc02a6786cd34fc58a69576e666470c0";
 const googleBooksKey = "AIzaSyAxqjUh8dmM18Wp0Vs0PdaJ_rMbTt6QUdo";
