@@ -124,6 +124,7 @@ function displayBook(number) {
 
   // instead of creating elements one by one
   // create a string literal to hold all elements needed
+  // ! eliminate the string literal and use the HTML cards instead !!!
   bookDiv.innerHTML = `
   <img src=${bookImgLink}></img>
   <p>${booksArray[number].volumeInfo.title}</p>
