@@ -5,85 +5,79 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Player One Reads</title>
+
+    <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="./assets/css/custom.css">
+
 </head>
 
 <body>
-        <header>
-            <nav class="navbar" role="navigation" aria-label="main navigation">
+    <header>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
 
-                <!-- :::: Our logo and link to homepage will replace this :::: -->
-                <div class="navbar-brand">
-                    <a class="navbar-item p-0" href="./recs-page.html">
-                        <img src="./assets/images/player-one-logo.jpg">
-                    </a>
+            <!-- :::: Our logo and link to homepage will replace this :::: -->
+            <div class="navbar-brand">
+                <a class="navbar-item p-0 m-3" href="./recs-page.html">
+                    <img src="./assets/images/player-one-logo.jpg">
+                </a>
 
-                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
-                        data-target="navbarBasicExample">
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                    </a>
-                </div>
-            </nav>
-        </header>
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                    data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+        </nav>
+    </header>
 
-        <main  class="columns is-11 is-flex-direction-row p-5">
-        <section>
+    <main class="columns is-11 is-flex-direction-column p-5">
+        <section class="is-flex is-justify-content-center">
             <!-- :::: SEARCH FIELD :::: -->
             <div class="field column is-5">
                 <form class="control">
-                    <input id="user-search-input" class="input" type="text" placeholder="Enter Video Game">
+                    <h2>Enter Video Game Below</h2>
+                    <input id="user-search-input" class="input my-3" type="text" placeholder="Enter Video Game">
                     <div class="control">
-                        <button id="search-btn" class="button">Submit</button>
+                        <button id="search-btn" class="button mb-3">Submit</button>
                     </div>
                 </form>
 
                 <!-- :::: DROPDOWN MENU FOR BOOK CATEGORIES :::: -->
-                <div class="dropdown">
+                <div class="dropdown is-active">
                     <div class="dropdown-trigger">
-                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
-                            <span>Click me</span>
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
+                            <span>Genres</span>
                             <span class="icon is-small">
-                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                <i class="fa-sharp fa-regular fa-angle-down"></i>
                             </span>
                         </button>
                     </div>
-                    <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-                        <div class="dropdown-content">
-                            <a href="#" class="dropdown-item">
-                                Overview
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                Modifiers
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                Grid
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                Form
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                Elements
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                Components
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                Layout
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                More
-                            </a>
+
+                    <!-- :::: DROP DOWN MENU -- Needs JS for functionality -->
+
+                    <!-- <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+                      <div id="category-menu" class="dropdown-content">
+                        <div class="dropdown-item">
+                          <p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>
                         </div>
-                    </div>
+                        <hr class="dropdown-divider">
+                        <div class="dropdown-item">
+                          <p>You simply need to use a <code>&lt;div&gt;</code> instead.</p>
+                        </div>
+                        <hr class="dropdown-divider">
+                        <a href="#" class="dropdown-item">
+                          This is a link
+                        </a>
+                      </div>
+                    </div> -->
                 </div>
             </div>
 
             <!-- :::: SEARCHED VIDEO GAME :::: -->
             <!-- Hidden until searched -->
-            <div class="card column is-5 is-offset-5 ">
+            <div class="card column is-5">
                 <div class="card-content">
                     <div class="content">
                         Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi
@@ -95,19 +89,21 @@
                 </div>
             </div>
         </section>
-<!-- 
-        <section id="book-suggestion-row" class="columns">
-            :::: BOOK RECOMMENDATIONS ::::
-            <div class="card column is-4">
-                <h1> Book 1 Rec</h1>
+
+        <section id="book-suggestion-row" class="is-flex columns is-9">
+            <!-- :::: BOOK RECOMMENDATIONS :::: -->
+            <div>
+                <div class="card column">
+                    <h1> Book 1 Rec</h1>
+                </div>
+                <div class="card column">
+                    <h1> Book 1 Rec</h1>
+                </div>
+                <div class="card column">
+                    <h1> Book 1 Rec</h1>
+                </div>
             </div>
-            <div class="card column is-4">
-                <h1> Book 1 Rec</h1>
-            </div>
-            <div class="card column is-4">
-                <h1> Book 1 Rec</h1>
-            </div>
-        </section> -->
+        </section>
     </main>
 </body>
 
