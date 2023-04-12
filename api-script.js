@@ -115,8 +115,13 @@ function bookDisplayLimit() {
 //::::::::::: display book ::::::::::::::::
 function displayBook(booksArray, number) {
   console.log("In display book:", booksArray, "Number: ", number);
+
   // get book image link
   const bookImgLink = booksArray.volumeInfo.imageLinks.thumbnail;
+  const bookTitle = String(booksArray.volumeInfo.title);
+  const bookDescription = String(booksArray.volumeInfo.description);
+  const bookInfoLink = String(booksArray.volumeInfo.infoLink);
+  console.log("Book title:", bookTitle);
 
   // creating div to hold the books suggestions
   const bookDiv = document.createElement("div");
@@ -126,10 +131,18 @@ function displayBook(booksArray, number) {
   // instead of creating elements one by one
   // create a string literal to hold all elements needed
   bookDiv.innerHTML = `
-  <img src=${bookImgLink}></img>
+  <img src=${bookImgLink} data-title="${bookTitle}" alt="${booksArray.volumeInfo.title} cover image"></img>
   <p>${booksArray.volumeInfo.title}</p>
   <p>Category: ${booksArray.volumeInfo.categories}</p>
   `;
+
+  // add event listener to book image
+  const bookImg = bookDiv.querySelector("img");
+  bookImg.addEventListener("click", function () {
+    console.log(`Title: ${bookTitle}`);
+    console.log(`Description: ${bookDescription}`);
+    console.log(`Info Link: ${bookInfoLink}`);
+  });
 
   // append book inside the book suggestion row
   const cardBody = document.querySelector("#card" + (number + 1));
