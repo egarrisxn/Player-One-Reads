@@ -4,7 +4,7 @@ const booksSuggestionNum = 3;
 let booksData;
 let booksArray = [];
 let booksCategories = new Set([]);
-
+const categoryMenu = document.querySelector("#category-menu");
 //::::::::::::: API Keys ::::::::::::::::
 const rawgApiKey = "cc02a6786cd34fc58a69576e666470c0";
 const googleBooksKey = "AIzaSyAxqjUh8dmM18Wp0Vs0PdaJ_rMbTt6QUdo";
@@ -103,19 +103,20 @@ function bookDisplayLimit() {
     alert("No books suggestions for that title");
   } else if (booksArray.length > booksSuggestionNum) {
     for (let i = 0; i < booksSuggestionNum; i++) {
-      displayBook(i);
+      displayBook(booksArray[i], i);
     }
   } else if (booksArray.length <= booksSuggestionNum) {
     for (let i = 0; i < booksArray.items.length; i++) {
-      displayBook(i);
+      displayBook(booksArray[i], i);
     }
   }
 }
 
 //::::::::::: display book ::::::::::::::::
-function displayBook(number) {
+function displayBook(booksArray, number) {
+  console.log("In display book:", booksArray, "Number: ", number);
   // get book image link
-  const bookImgLink = booksArray[number].volumeInfo.imageLinks.thumbnail;
+  const bookImgLink = booksArray.volumeInfo.imageLinks.thumbnail;
 
   // creating div to hold the books suggestions
   const bookDiv = document.createElement("div");
@@ -127,22 +128,22 @@ function displayBook(number) {
   // ! eliminate the string literal and use the HTML cards instead !!!
   bookDiv.innerHTML = `
   <img src=${bookImgLink}></img>
-  <p>${booksArray[number].volumeInfo.title}</p>
-  <p>Category: ${booksArray[number].volumeInfo.categories}</p>
+  <p>${booksArray.volumeInfo.title}</p>
+  <p>Category: ${booksArray.volumeInfo.categories}</p>
   `;
 
   // append book inside the book suggestion row
-  const cardBody = document.querySelector("#book-suggestion-row");
+  const cardBody = document.querySelector("#card" + (number + 1));
   cardBody.appendChild(bookDiv);
   // buildBooksCategories(); //! to delete
 }
 
 //::::::::::: populate dropdown ::::::::::::::::
 function populateDropdown() {
-  const categoryMenu = document.querySelector("#category-menu");
+  // const categoryMenu = document.querySelector("#category-menu");
   booksCategories.forEach((category) => {
     // select categories container
-    const div = document.createElement("div");
+    const div = document.createElement("option");
     div.setAttribute("class", "dropdown-item");
     div.dataset.category = `${category}`;
 
@@ -154,3 +155,30 @@ function populateDropdown() {
     categoryMenu.appendChild(div);
   });
 }
+
+// add event listener to category menu
+categoryMenu.addEventListener("change", function () {
+  const selectedCategory = this.value;
+  const booksWithCategory = [];
+  let count = 0;
+
+  // loop through booksArray to find 3 books with the selected category
+  for (let i = 0; i < booksArray.length; i++) {
+    const categories = booksArray[i].volumeInfo.categories;
+    if (categories && categories.includes(selectedCategory)) {
+      booksWithCategory.push(booksArray[i]);
+      // displayBook(booksWithCategory[0], i);
+      console.log("in category search:", booksArray[i]);
+      count++;
+    }
+    if (count === 3) {
+      break;
+    }
+  }
+
+  // console log the 3 books with the selected category
+  // console.log(`Books with category "${selectedCategory}":`);
+  for (let i = 0; i < booksWithCategory.length; i++) {
+    displayBook(booksWithCategory[i], i);
+  }
+});

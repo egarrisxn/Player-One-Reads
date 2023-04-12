@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Player One Reads</title>
+
+        <link rel="stylesheet" href="./assets/css/reset.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+        <script src="./api-script.js" defer></script>
+        <link rel="stylesheet" href="./assets/css/custom.css" />
+    </head>
+
+    <body>
+        <header>
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <!--! :::: Our logo and link to homepage will replace this :::: -->
+                <div class="navbar-brand">
+                    <a class="navbar-item p-0 m-3" href="./recs-page.html">
+                        <img src="./assets/images/logoideayellow.png">
+                    </a>
+
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                        data-target="navbarBasicExample">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <main class="is-fullheight columns is-vccenter is-11 is-flex-direction-column p-5">
+            <section class="columns search-game-summary is-flex is-justify-content-center m-5">
+                <!--! :::: SEARCH FIELD :::: -->
+                <div class="field column is-5">
+                    <form class="control">
+                        <h2>Enter Video Game Below</h2>
+                        <input id="user-search-input" class="input my-3" type="text" placeholder="Enter Video Game">
+                        <div class="control">
+                            <button id="search-btn" class="button mb-3">Submit</button>
+                        </div>
+                    </form>
+
+                    <!-- !:::::: New Drop Down -->
+                    <div class="field">
+                        <label class="label">Select Option</label>
+                        <div class="control">
+                            <div class="select">
+                                <select id="category-menu">
+                                    <option>Select category</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- !:::::::::::::::::::: -->
+
+                    <!-- :::: DROP DOWN MENU -- Needs JS for functionality -->
+                    <!-- <div class="dropdown is-active">
+                        <div class="dropdown-trigger">
+                            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                                <span>Dropdown button</span>
+                                <span class="icon is-small">
+                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+                            <div id="category-menu" class="dropdown-content">
+
+                            </div>
+                            <hr class="dropdown-divider" />
+                        </div>
+                    </div> -->
+                </div>
+                </div>
+                </div>
+
+                <!--! :::: SEARCHED VIDEO GAME :::: -->
+                <!-- Hidden until searched -->
+                <div class="card column is-5">
+                    <div class="card-content">
+                        <div id="game-img-container" class="content">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="book-suggestion-row" class="columns is-flex is-justify-content-space-evenly">
+                <!--! :::: BOOK RECOMMENDATIONS :::: -->
+                <div class="column is-flex is-justify-content-space-evenly">
+                    <!-- ! added id's to each card' -->
+                    <div id="card1" class="card column is-3">
+                        <h1> Book 1 Rec</h1>
+                    </div>
+                    <div id="card2" class="card column is-3">
+                        <h1> Book 1 Rec</h1>
+                    </div>
+                    <div id="card3" class="card column is-3">
+                        <h1> Book 1 Rec</h1>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    </body>
+
+</html>
