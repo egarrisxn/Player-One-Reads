@@ -125,7 +125,6 @@ function displayBook(booksArray, number) {
 
   // instead of creating elements one by one
   // create a string literal to hold all elements needed
-  // ! eliminate the string literal and use the HTML cards instead !!!
   bookDiv.innerHTML = `
   <img src=${bookImgLink}></img>
   <p>${booksArray.volumeInfo.title}</p>
@@ -134,8 +133,8 @@ function displayBook(booksArray, number) {
 
   // append book inside the book suggestion row
   const cardBody = document.querySelector("#card" + (number + 1));
+  cardBody.innerHTML = "";
   cardBody.appendChild(bookDiv);
-  // buildBooksCategories(); //! to delete
 }
 
 //::::::::::: populate dropdown ::::::::::::::::
@@ -178,6 +177,10 @@ categoryMenu.addEventListener("change", function () {
 
   // console log the 3 books with the selected category
   // console.log(`Books with category "${selectedCategory}":`);
+  for (let i = 1; i < 4; i++) {
+    const cardBody = document.querySelector("#card" + i);
+    cardBody.innerHTML = "";
+  }
   for (let i = 0; i < booksWithCategory.length; i++) {
     displayBook(booksWithCategory[i], i);
   }
