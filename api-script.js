@@ -23,7 +23,8 @@ function buildBooksCategories() {
     const bookCategory = book.volumeInfo.categories[0];
     booksCategories.add(bookCategory);
   });
-  console.log(booksCategories); //TO BE REMOVED LATER
+  // console.log(booksCategories); //TO BE REMOVED LATER
+  populateDropdown();
 }
 
 //::::::::::: make call to RAWG API ::::::::::::::::
@@ -134,6 +135,9 @@ function displayBook(number) {
   buildBooksCategories();
 }
 
-// todo:
-//! create a function to loop through the books data and build an array
-//! or set of unique categories that will be used to refine the book suggestions
+//::::::::::: populate dropdown ::::::::::::::::
+function populateDropdown() {
+  booksCategories.forEach((category) => {
+    console.log(category);
+  });
+}
