@@ -1,8 +1,14 @@
 body {
     background-color: #E09F3E;
-    
+    display: block;
 }
 
 .navbar{
     background-color: #252525;
+}
+
+.flex-row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
