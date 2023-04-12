@@ -6,3 +6,7 @@ body {
 .navbar{
     background-color: #252525;
 }
+
+.input {
+    width: 75%;
+}
