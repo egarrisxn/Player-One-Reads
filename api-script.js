@@ -13,20 +13,20 @@ const googleBooksKey = "AIzaSyAxqjUh8dmM18Wp0Vs0PdaJ_rMbTt6QUdo";
 const searchButton = document.querySelector("#search-btn");
 searchButton.addEventListener("click", function (e) {
   e.preventDefault();
-  const userInput = document.querySelector("#city-input").value;
+  const userInput = document.querySelector("#user-search-input").value;
   fetchGameData(userInput);
 });
 
 //:::::::::::: creating book category array :::::::::::::::
 function buildBooksCategories() {
-  booksArray.forEach( book => {
+  booksArray.forEach((book) => {
     const bookCategory = book.volumeInfo.categories[0];
-      booksCategories.add(bookCategory);
-    })
-  console.log(booksCategories); //TO BE REMOVED LATER
+    booksCategories.add(bookCategory);
+  });
+  populateDropdown();
 }
-
-
+console.log(booksArray);
+console.log(booksCategories); //TO BE REMOVED LATER
 
 //::::::::::: make call to RAWG API ::::::::::::::::
 function fetchGameData(gameTitle) {
@@ -47,11 +47,11 @@ function fetchGameData(gameTitle) {
 //::::::::::: 2. and post game image on website :::::::::::::::
 function extractGameData(gameObject) {
   // container where the game image will be appended
-  const gameImageContainer = document.querySelector(".game-img-container");
+  const gameImageContainer = document.querySelector("#game-img-container");
 
   // clear the previous image from the gameImageContainer
   gameImageContainer.innerHTML = "";
-  console.log(gameObject.results[0]);
+  // console.log(gameObject.results[0]);
 
   const gameName = gameObject.results[0].name;
 
@@ -85,14 +85,14 @@ function bookApiCall(title) {
       return data;
     })
     .then(function (data) {
-      console.log(data);
+      // console.log(data);
       // only add books that have a category association
       data.items.forEach((item) => {
         if (item.volumeInfo.categories && item.volumeInfo.imageLinks) {
           booksArray.push(item);
         }
       });
-
+      buildBooksCategories();
       bookDisplayLimit();
     });
 }
@@ -122,7 +122,6 @@ function displayBook(number) {
   bookDiv.setAttribute("style", "display: inline-block");
   bookDiv.setAttribute("class", "me-2 col-4");
 
-
   // instead of creating elements one by one
   // create a string literal to hold all elements needed
   bookDiv.innerHTML = `
@@ -134,9 +133,23 @@ function displayBook(number) {
   // append book inside the book suggestion row
   const cardBody = document.querySelector("#book-suggestion-row");
   cardBody.appendChild(bookDiv);
-  buildBooksCategories();
+  // buildBooksCategories(); //! to delete
 }
 
-// todo:
-//! create a function to loop through the books data and build an array
-//! or set of unique categories that will be used to refine the book suggestions
+//::::::::::: populate dropdown ::::::::::::::::
+function populateDropdown() {
+  const categoryMenu = document.querySelector("#category-menu");
+  booksCategories.forEach((category) => {
+    // select categories container
+    const div = document.createElement("div");
+    div.setAttribute("class", "dropdown-item");
+    div.dataset.category = `${category}`;
+
+    // dynamically created elements
+    div.innerHTML = `
+  <p>${category}</p>
+  <hr class="dropdown-divider" />`;
+
+    categoryMenu.appendChild(div);
+  });
+}

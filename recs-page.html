@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Player One Reads</title>
 
-    <link rel="stylesheet" href="./assets/css/reset.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="./assets/css/custom.css">
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <script src="./api-script.js" defer></script>
+    <link rel="stylesheet" href="./assets/css/custom.css" />
+  </head>
 
-</head>
-
-<body>
+  <body>
     <header>
-        <nav class="navbar" role="navigation" aria-label="main navigation">
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <!-- :::: Our logo and link to homepage will replace this :::: -->
+        <div class="navbar-brand">
+          <a class="navbar-item p-0 m-3" href="./recs-page.html">
+            <img src="./assets/images/player-one-logo.jpg" />
+          </a>
+
 
             <!--! :::: Our logo and link to homepage will replace this :::: -->
             <div class="navbar-brand">
@@ -44,32 +52,38 @@
                     </div>
                 </form>
 
-                <!-- :::: DROPDOWN MENU FOR BOOK CATEGORIES :::: -->
-                <div class="dropdown is-active">
-                    <div class="dropdown-trigger">
-                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
-                            <span>Genres</span>
-                            <span class="icon is-small">
-                                <i class="fa-sharp fa-regular fa-angle-down"></i>
-                            </span>
-                        </button>
-                    </div>
 
-                    <!--! :::: DROP DOWN MENU -- Needs JS for functionality -->
+      <section class="is-flex is-justify-content-center">
+        <!-- :::: SEARCH FIELD :::: -->
+        <div class="field column is-5">
+          <form class="control">
+            <h2>Enter Video Game Below</h2>
+            <input
+              id="user-search-input"
+              class="input my-3"
+              type="text"
+              placeholder="Enter Video Game"
+            />
+            <div class="control">
+              <button id="search-btn" class="button mb-3">Submit</button>
+            </div>
+          </form>
 
-                    <div class="dropdown-menu" id="dropdown-menu2" role="menu">
-                      <div id="category-menu" class="dropdown-content">
-                        <div class="dropdown-item">
-                          <p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>
+
+<!-- :::: DROP DOWN MENU -- Needs JS for functionality -->
+
+                      <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+                        <div id="category-menu" class="dropdown-content">
+                          <!-- <div class="dropdown-item">
+                            <!-- ! categories go here -->
+                            <!-- <p>
+                              You can insert <strong>any type of content</strong> within
+                              the dropdown menu.
+                            </p> -->
+                          </div>
+                          <hr class="dropdown-divider" /> -->
+                          <a href="#" class="dropdown-item"> This is a link </a>
                         </div>
-                        <hr class="dropdown-divider">
-                        <div class="dropdown-item">
-                          <p>You simply need to use a <code>&lt;div&gt;</code> instead.</p>
-                        </div>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item">
-                          This is a link
-                        </a>
                       </div>
                     </div>
                 </div>
@@ -104,7 +118,11 @@
                     </div>
                 </div>
         </section>
-    </main>
-</body>
 
+    </main>
+            <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  </body>
 </html>
+
