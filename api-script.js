@@ -13,20 +13,18 @@ const googleBooksKey = "AIzaSyAxqjUh8dmM18Wp0Vs0PdaJ_rMbTt6QUdo";
 const searchButton = document.querySelector("#search-btn");
 searchButton.addEventListener("click", function (e) {
   e.preventDefault();
-  const userInput = document.querySelector("#city-input").value;
+  const userInput = document.querySelector("#user-search-input").value;
   fetchGameData(userInput);
 });
 
 //:::::::::::: creating book category array :::::::::::::::
 function buildBooksCategories() {
-  booksArray.forEach( book => {
+  booksArray.forEach((book) => {
     const bookCategory = book.volumeInfo.categories[0];
-      booksCategories.add(bookCategory);
-    })
+    booksCategories.add(bookCategory);
+  });
   console.log(booksCategories); //TO BE REMOVED LATER
 }
-
-
 
 //::::::::::: make call to RAWG API ::::::::::::::::
 function fetchGameData(gameTitle) {
@@ -47,7 +45,7 @@ function fetchGameData(gameTitle) {
 //::::::::::: 2. and post game image on website :::::::::::::::
 function extractGameData(gameObject) {
   // container where the game image will be appended
-  const gameImageContainer = document.querySelector(".game-img-container");
+  const gameImageContainer = document.querySelector("#game-img-container");
 
   // clear the previous image from the gameImageContainer
   gameImageContainer.innerHTML = "";
@@ -121,7 +119,6 @@ function displayBook(number) {
   const bookDiv = document.createElement("div");
   bookDiv.setAttribute("style", "display: inline-block");
   bookDiv.setAttribute("class", "me-2 col-4");
-
 
   // instead of creating elements one by one
   // create a string literal to hold all elements needed
