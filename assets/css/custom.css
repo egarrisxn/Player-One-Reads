@@ -1,12 +1,14 @@
 body {
     background-color: #E09F3E;
-    
+    display: block;
 }
 
 .navbar{
     background-color: #252525;
 }
 
+
 .input {
     width: 75%;
+
 }

@@ -38,7 +38,7 @@
             <div class="field column is-5">
                 <form class="control">
                     <h2>Enter Video Game Below</h2>
-                    <input id="user-search-input" class="input my-3" type="text" placeholder="Enter Video Game">
+                    <input id="city-input" class="input my-3" type="text" placeholder="Enter Video Game">
                     <div class="control">
                         <button id="search-btn" class="button mb-3">Submit</button>
                     </div>
@@ -79,16 +79,12 @@
             <!-- Hidden until searched -->
             <div class="card column is-5">
                 <div class="card-content">
-                    <div class="content">
-                        Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi
-                        porta
-                        gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes,
-                        nascetur
-                        ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+                    <div class="game-img-container">
                     </div>
                 </div>
             </div>
         </section>
+
 
         <section id="book-suggestion-row" class="columns is-flex is-justify-content-space-evenly">
                 <!--! :::: BOOK RECOMMENDATIONS :::: -->
@@ -102,9 +98,15 @@
                     <div class="card column is-3">
                         <h1> Book 1 Rec</h1>
                     </div>
+
                 </div>
         </section>
     </main>
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <!-- js script -->
+    <script src="./api-script.js"></script>
 </body>
 
 </html>
