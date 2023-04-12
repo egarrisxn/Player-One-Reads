@@ -23,9 +23,10 @@ function buildBooksCategories() {
     const bookCategory = book.volumeInfo.categories[0];
     booksCategories.add(bookCategory);
   });
-  // console.log(booksCategories); //TO BE REMOVED LATER
   populateDropdown();
 }
+console.log(booksArray);
+console.log(booksCategories); //TO BE REMOVED LATER
 
 //::::::::::: make call to RAWG API ::::::::::::::::
 function fetchGameData(gameTitle) {
@@ -50,7 +51,7 @@ function extractGameData(gameObject) {
 
   // clear the previous image from the gameImageContainer
   gameImageContainer.innerHTML = "";
-  console.log(gameObject.results[0]);
+  // console.log(gameObject.results[0]);
 
   const gameName = gameObject.results[0].name;
 
@@ -84,14 +85,14 @@ function bookApiCall(title) {
       return data;
     })
     .then(function (data) {
-      console.log(data);
+      // console.log(data);
       // only add books that have a category association
       data.items.forEach((item) => {
         if (item.volumeInfo.categories && item.volumeInfo.imageLinks) {
           booksArray.push(item);
         }
       });
-
+      buildBooksCategories();
       bookDisplayLimit();
     });
 }
@@ -132,12 +133,23 @@ function displayBook(number) {
   // append book inside the book suggestion row
   const cardBody = document.querySelector("#book-suggestion-row");
   cardBody.appendChild(bookDiv);
-  buildBooksCategories();
+  // buildBooksCategories(); //! to delete
 }
 
 //::::::::::: populate dropdown ::::::::::::::::
 function populateDropdown() {
+  const categoryMenu = document.querySelector("#category-menu");
   booksCategories.forEach((category) => {
-    console.log(category);
+    // select categories container
+    const div = document.createElement("div");
+    div.setAttribute("class", "dropdown-item");
+    div.dataset.category = `${category}`;
+
+    // dynamically created elements
+    div.innerHTML = `
+  <p>${category}</p>
+  <hr class="dropdown-divider" />`;
+
+    categoryMenu.appendChild(div);
   });
 }
