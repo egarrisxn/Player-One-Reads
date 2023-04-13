@@ -19,7 +19,8 @@
             <!-- :::: Our logo and link to homepage will replace this :::: -->
             <div class="navbar-brand">
                 <a class="navbar-item p-0" href="./recs-page.html">
-                    <img src="./assets/logoideayellow.png">
+                    <!--!ADDED /IMAGES IN SRC-->
+                    <img src="./assets/images/logoideayellow.png">
                 </a>
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
                     data-target="navbarBasicExample">
@@ -40,15 +41,19 @@
             <div class="columns is-8 is-flex">
                 <div class="column">
                     <!--First column-->
-                    <img class="p-logo" src="./assets/logoideayellow.png">
+                    <!--!ADDED /IMAGES IN SRC-->
+                    <img class="p-logo" src="./assets/images/logoideayellow.png">
                     <p>delivers reading recommendations based on your gaming habits</p>
-                    <button class="button">Click here to Start!</button>
+                    <!--!ADDED ID LANDING BUTTON-->
+                    <button class="button" id="landing-btn" onclick="goToPage()">Click here to Start!</button>
                 </div>
                 <div class="column">
                     <!-- Second column -->
                     <img class="hero" src="./assets/book-png-25696.png">
                 </div>
     </main>
+    <!--!ADDED JS SCRIPT-->
+    <script src="./api-script.js"></script>
 </body>
 
 </html>

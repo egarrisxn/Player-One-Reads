@@ -9,6 +9,11 @@ let booksCategories = new Set([]);
 const rawgApiKey = "cc02a6786cd34fc58a69576e666470c0";
 const googleBooksKey = "AIzaSyAxqjUh8dmM18Wp0Vs0PdaJ_rMbTt6QUdo";
 
+//!::::::ADDED CLICK FOR LANDING PAGE::::::::::
+function goToPage() {
+  window.location.href = "./recs-page.html";
+}
+
 //::::::::::: search button event listener ::::::::::::::::
 const searchButton = document.querySelector("#search-btn");
 searchButton.addEventListener("click", function (e) {
