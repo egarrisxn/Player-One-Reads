@@ -13,12 +13,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-</head>
-
-<body>
+  <body>
     <header>
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-
+      <nav class="navbar" role="navigation" aria-label="main navigation">
             <!--! :::: Our logo and link to homepage will replace this :::: -->
             <div class="navbar-brand">
                 <a class="navbar-item p-0 m-3" href="./recs-page.html">
@@ -38,6 +35,7 @@
     <main class="is-fullheight columns is-vccenter is-11 is-flex-direction-column p-5">
         <section class="columns search-game-summary is-flex is-justify-content-center m-6">
             <!--! :::: SEARCH FIELD :::: -->
+
             <div class="search-container field column is-5 m-0 mr-2">
                     <form class="control">
                         <h2>Enter Video Game Below</h2>
@@ -64,6 +62,7 @@
                       <div id="category-menu" class="dropdown-content">
                         <div class="dropdown-item">
                           <p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>
+
                         </div>
                         <hr class="dropdown-divider">
                         <div class="dropdown-item">
@@ -82,22 +81,26 @@
             <!-- Hidden until searched -->
             <div class="card column is-5">
                 <div class="card-content">
-                    <div class="content">
-                        Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi
-                        porta
-                        gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes,
-                        nascetur
-                        ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+                    <div id="game-img-container" class="content">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="book-suggestion-row" class="columns is-flex is-justify-content-space-between m-4">
-            <!--! :::: BOOK RECOMMENDATIONS :::: -->
-            <div class="column is-flex is-justify-content-center">
-                <div class="card book-rec column is-2 m-3">
-                    <h1> Book 1 Rec</h1>
+        <section id="book-suggestion-row" class="columns is-flex is-justify-content-space-evenly">
+                <!--! :::: BOOK RECOMMENDATIONS :::: -->
+                <div class="column is-flex is-justify-content-space-evenly">
+                  <!-- ! added id's to each card' -->
+                    <div id="card1" class="card column is-3">
+                        <h1> Book 1 Rec</h1>
+                    </div>
+                    <div id="card2" class="card column is-3">
+                        <h1> Book 1 Rec</h1>
+                    </div>
+                    <div id="card3" class="card column is-3">
+                        <h1> Book 1 Rec</h1>
+                    </div>
+
                 </div>
                 <div class="card book-rec column is-2 m-3">
                     <h1> Book 1 Rec</h1>
