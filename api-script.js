@@ -79,13 +79,13 @@ function extractGameData(gameObject) {
 
   // call to the function that make the books API call
   // bookApiCall(gameName);
-  bookApiCall(gameName, gameGenre1);
+  bookApiCall(gameName, gameGenre1, gameGenre2);
 }
 
 //::::::::::: make call to GoogleBooks API ::::::::::::::::
-function bookApiCall(title, genre) {
+function bookApiCall(title, genre, genre2) {
   console.log("Game title:", title, "Game genre:", genre);
-  const googleBooksApi = `https://www.googleapis.com/books/v1/volumes?key=${googleBooksKey}&orderBy=relevance&projection=full&printType=all&maxResults=40&q=${genre}+subject:(games, adventure, computers)`;
+  const googleBooksApi = `https://www.googleapis.com/books/v1/volumes?key=${googleBooksKey}&orderBy=relevance&projection=full&printType=all&maxResults=40&q=(${genre}, ${genre2}))`;
   booksArray = [];
   fetch(googleBooksApi)
     .then(function (response) {
@@ -96,7 +96,11 @@ function bookApiCall(title, genre) {
       // console.log(data);
       // only add books that have a category association
       data.items.forEach((item) => {
-        if (item.volumeInfo.categories && item.volumeInfo.imageLinks) {
+        if (
+          item.volumeInfo.categories &&
+          item.volumeInfo.imageLinks &&
+          item.volumeInfo.description
+        ) {
           booksArray.push(item);
         }
       });
