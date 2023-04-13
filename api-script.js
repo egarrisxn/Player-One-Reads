@@ -25,7 +25,7 @@ function buildBooksCategories() {
     const bookCategory = book.volumeInfo.categories[0];
     booksCategories.add(bookCategory);
   });
-  console.log("Books categories:", booksCategories);
+  // console.log("Books categories:", booksCategories);
   populateDropdown();
 }
 // console.log(booksArray);
@@ -84,7 +84,7 @@ function extractGameData(gameObject) {
 
 //::::::::::: make call to GoogleBooks API ::::::::::::::::
 function bookApiCall(title, genre, genre2) {
-  console.log("Game title:", title, "Game genre:", genre);
+  console.log("Game title:", title, "    Game genre:", genre);
   const googleBooksApi = `https://www.googleapis.com/books/v1/volumes?key=${googleBooksKey}&orderBy=relevance&projection=full&printType=all&maxResults=40&q=(${genre}, ${genre2}))`;
   booksArray = [];
   fetch(googleBooksApi)
@@ -104,7 +104,7 @@ function bookApiCall(title, genre, genre2) {
           booksArray.push(item);
         }
       });
-      console.log("Books array:", booksArray);
+      // console.log("Books array:", booksArray);
       categoryMenu.innerHTML = "";
       booksCategories = new Set([]);
       buildBooksCategories();
@@ -198,7 +198,7 @@ categoryMenu.addEventListener("change", function () {
     if (categories && categories.includes(selectedCategory)) {
       booksWithCategory.push(booksArray[i]);
       // displayBook(booksWithCategory[0], i);
-      console.log("in category search:", booksArray[i]);
+      // console.log("in category search:", booksArray[i]);
       count++;
     }
     if (count === 3) {
