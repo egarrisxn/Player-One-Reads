@@ -9,7 +9,7 @@ const categoryMenu = document.querySelector("#category-menu");
 const rawgApiKey = "cc02a6786cd34fc58a69576e666470c0";
 const googleBooksKey = "AIzaSyAxqjUh8dmM18Wp0Vs0PdaJ_rMbTt6QUdo";
 
-//::::::::::: search button event listener ::::::::::::::::
+//::::::::::: Search button event listener ::::::::::::::::
 const searchButton = document.querySelector("#search-btn");
 searchButton.addEventListener("click", function (e) {
   e.preventDefault();
@@ -19,7 +19,7 @@ searchButton.addEventListener("click", function (e) {
   fetchGameData(userInput);
 });
 
-//:::::::::::: creating book category array :::::::::::::::
+//:::::::::::: Creating book category array :::::::::::::::
 function buildBooksCategories() {
   booksArray.forEach((book) => {
     const bookCategory = book.volumeInfo.categories[0];
@@ -31,7 +31,7 @@ function buildBooksCategories() {
 // console.log(booksArray);
 // console.log(booksCategories); //TO BE REMOVED LATER
 
-//::::::::::: make call to RAWG API ::::::::::::::::
+//::::::::::: Make call to RAWG API ::::::::::::::::
 function fetchGameData(gameTitle) {
   const rawgApi = `https://api.rawg.io/api/games?key=${rawgApiKey}&search=${gameTitle}`;
 
@@ -46,20 +46,20 @@ function fetchGameData(gameTitle) {
     });
 }
 
-//::::::::::: 1. get necessary game field data ::::::::::::::::
+//::::::::::: 1. Get necessary game field data ::::::::::::::::
 //::::::::::: 2. and post game image on website :::::::::::::::
 function extractGameData(gameObject) {
-  // container where the game image will be appended
+  // Container where the game image will be appended
   const gameImageContainer = document.querySelector("#game-img-container");
 
-  // clear the previous image from the gameImageContainer
+  // Clear the previous image from the gameImageContainer
   gameImageContainer.innerHTML = "";
   // console.log(gameObject.results[0]);
 
   const gameName = gameObject.results[0].name;
   let gameGenre1;
   let gameGenre2;
-  // some games only have 1 genre instead of 2
+  // Some games only have 1 genre instead of 2
   if (gameObject.results[0].genres.length === 2) {
     gameGenre1 = gameObject.results[0].genres[0].slug;
     gameGenre2 = gameObject.results[0].genres[1].slug;
@@ -69,7 +69,7 @@ function extractGameData(gameObject) {
     // console.log("1 genre", gameGenre1);
   }
 
-  // game image link and img element creation
+  // Game image link and img element creation
   const gameBackgroundImg = gameObject.results[0].background_image;
   const gameImage = document.createElement("img");
   gameImage.src = gameBackgroundImg;
@@ -77,17 +77,16 @@ function extractGameData(gameObject) {
 
   gameImageContainer.appendChild(gameImage);
 
-  // call to the function that make the books API call
-  // bookApiCall(gameName);
+  // Call to the function that makes the books API call
   bookApiCall(gameName, gameGenre1, gameGenre2);
 }
 
-//::::::::::: make call to GoogleBooks API ::::::::::::::::
+//::::::::::: Make call to GoogleBooks API ::::::::::::::::
 function bookApiCall(title, genre, genre2) {
   console.log("Game title:", title, "    Game genre:", genre);
   const googleBooksApi = `https://www.googleapis.com/books/v1/volumes?key=${googleBooksKey}&orderBy=relevance&projection=full&printType=all&maxResults=40&q=(${genre}, ${genre2}))`;
 
-  // clear previous booksArray content
+  // Clear previous booksArray content
   booksArray = [];
 
   fetch(googleBooksApi)
@@ -97,7 +96,7 @@ function bookApiCall(title, genre, genre2) {
     })
     .then(function (data) {
       // console.log(data);
-      // only add books that have a category, image and description
+      // Only add books that have a category, image and description
       data.items.forEach((item) => {
         if (
           item.volumeInfo.categories &&
@@ -108,7 +107,7 @@ function bookApiCall(title, genre, genre2) {
         }
       });
       // console.log("Books array:", booksArray);
-      // clear previous dropdown items
+      // Clear previous dropdown items
       categoryMenu.innerHTML = "";
       booksCategories = new Set([]);
       buildBooksCategories();
@@ -116,7 +115,7 @@ function bookApiCall(title, genre, genre2) {
     });
 }
 
-//::::::::::: limit book selection ::::::::::::::::
+//::::::::::: Limit book selection ::::::::::::::::
 function bookDisplayLimit() {
   if (booksArray.length === 0) {
     alert("No books suggestions for that title");
@@ -131,23 +130,20 @@ function bookDisplayLimit() {
   }
 }
 
-//::::::::::: display book ::::::::::::::::
+//::::::::::: Display book ::::::::::::::::
 function displayBook(booksArray, number) {
-  // console.log("In display book:", booksArray, "Number: ", number);
-
-  // get book image link, title and description
+  // Get book image link, title and description
   const bookImgLink = booksArray.volumeInfo.imageLinks.thumbnail;
   const bookTitle = String(booksArray.volumeInfo.title);
   const bookDescription = String(booksArray.volumeInfo.description);
   const bookInfoLink = String(booksArray.volumeInfo.infoLink);
-  // console.log("Book title:", bookTitle);
 
-  // creating div to hold the books suggestions
+  // Creating div to hold the books suggestions
   const bookDiv = document.createElement("div");
   bookDiv.setAttribute("style", "display: inline-block");
   bookDiv.setAttribute("class", "me-2 col-4");
 
-  // instead of creating elements one by one
+  // Instead of creating elements one by one,
   // create a string literal to hold all elements needed
   bookDiv.innerHTML = `
   <img src=${bookImgLink} data-title="${bookTitle}" alt="${booksArray.volumeInfo.title} cover image" class="js-modal-trigger" data-target="modal-js"></img>
@@ -155,47 +151,51 @@ function displayBook(booksArray, number) {
   <p>Category: ${booksArray.volumeInfo.categories}</p>
   `;
 
-  // add event listener to book image
+  // Add event listener to book image
   const bookImg = bookDiv.querySelector("img");
+
   bookImg.addEventListener("click", function () {
+    // When a book image is clicked, the class is-active will be
+    // added to the modal which will launch the modal
     const modal = document.querySelector("#modal-js");
     modal.classList.add("is-active");
-    // todo: instead of console log this info goes to the modal
+
+    // HTML tags to add content to the model. The modal will
+    // display the book title, description and google link
     const modalContent = `
     <h2 class="title">${bookTitle}</h2>
     <p>${bookDescription}</p>
     <br>
     <a href=${bookInfoLink} target="_blank">${bookInfoLink}</a>
     `;
+
+    // Add the content to the modal card
     const modalCardItems = document.querySelector("#modal-card-items");
     modalCardItems.innerHTML = modalContent;
-    // console.log(`Title: ${bookTitle}`);
-    // console.log(`Description: ${bookDescription}`);
-    // console.log(`Info Link: ${bookInfoLink}`);
   });
 
-  // append book inside the book suggestion row
+  // Append book inside the book suggestion row
   const cardBody = document.querySelector("#card" + (number + 1));
 
-  // clear previous book image then add the new one
+  // Clear previous book image then add the new one
   cardBody.innerHTML = "";
   cardBody.appendChild(bookDiv);
 }
 
-//::::::::::: populate dropdown ::::::::::::::::
+//::::::::::: Populate dropdown ::::::::::::::::
 function populateDropdown() {
-  // add the first dropdown element which will be "Select category"
+  // Add the first dropdown element which will be "Select category"
   const selectCategory = document.createElement("option");
   selectCategory.textContent = "Select category";
   categoryMenu.appendChild(selectCategory);
 
   booksCategories.forEach((category) => {
-    // create a category element and add a class and data- attributes
+    // Create a category element and add a class and data- attributes
     const div = document.createElement("option");
     div.setAttribute("class", "dropdown-item");
     div.dataset.category = `${category}`;
 
-    // dynamically created elements
+    // Dynamically created elements
     div.innerHTML = `
   <p>${category}</p>
   <hr class="dropdown-divider" />`;
@@ -204,23 +204,23 @@ function populateDropdown() {
   });
 }
 
-// add event listener to category menu
+// Add event listener to category menu
 categoryMenu.addEventListener("change", function () {
   const selectedCategory = this.value;
   const booksWithCategory = [];
   let count = 0;
 
-  // loop through booksArray to find 3 books with the selected category
+  // Loop through booksArray to find 3 books with the selected category
   for (let i = 0; i < booksArray.length; i++) {
     const categories = booksArray[i].volumeInfo.categories;
 
-    // if the categories key exits and includes the selected category
+    // If the categories key exits and includes the selected category,
     // add the book to the booksWithCategory array
     if (categories && categories.includes(selectedCategory)) {
       booksWithCategory.push(booksArray[i]);
       count++;
     }
-    // if 3 books have been selected break out of the loop
+    // If 3 books have been selected break out of the loop
     if (count === 3) {
       break;
     }
@@ -241,7 +241,7 @@ function clearCardBody() {
   }
 }
 
-// :::::::::::::::::::: MODAL CODE ::::::::::::::::::::::::::
+// :::::::::::::::::::: BULMA JS MODAL CODE ::::::::::::::::::::::::::
 document.addEventListener("DOMContentLoaded", () => {
   // Functions to open and close a modal
   function openModal($el) {
