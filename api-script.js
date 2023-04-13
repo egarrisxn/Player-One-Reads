@@ -72,16 +72,57 @@ function extractGameData(gameObject) {
   gameImageContainer.appendChild(gameImage);
 
   // Call to the function that makes the books API call
-  bookApiCall(gameName, gameGenre1, gameGenre2);
+  bookApiCall1(gameName, gameGenre1, gameGenre2);
 }
 
 //::::::::::: Make call to GoogleBooks API ::::::::::::::::
-function bookApiCall(title, genre, genre2) {
-  console.log("Game title:", title, "    Game genre:", genre);
-  const googleBooksApi = `https://www.googleapis.com/books/v1/volumes?key=${googleBooksKey}&orderBy=relevance&projection=full&printType=all&maxResults=40&q=(${genre}, ${genre2}))`;
+function bookApiCall1(title, genre, genre2) {
+  console.log(
+    "Game title:",
+    title,
+    "    Game genre-1:",
+    genre,
+    "    Game genre-2:",
+    genre2
+  );
+  const googleBooksApi = `https://www.googleapis.com/books/v1/volumes?key=${googleBooksKey}&orderBy=relevance&projection=full&startIndex=0&orderBy=newest&printType=all&maxResults=40&q=(${genre}, ${genre2}))`;
 
   // Clear previous booksArray content
   booksArray = [];
+
+  fetch(googleBooksApi)
+    .then(function (response) {
+      const data = response.json();
+      return data;
+    })
+    .then(function (data) {
+      // Only add books that have a category, image and description
+      data.items.forEach((item) => {
+        if (
+          item.volumeInfo.categories &&
+          item.volumeInfo.imageLinks &&
+          item.volumeInfo.description
+        ) {
+          booksArray.push(item);
+        }
+      });
+      // Clear previous dropdown items
+      categoryMenu.innerHTML = "";
+      booksCategories = new Set([]);
+      // shuffleArray(booksArray); // <== might need to remove
+      // buildBooksCategories();
+      // bookDisplayLimit();
+      bookApiCall2(title, genre, genre2);
+    });
+}
+
+// :::::::::::::: Books API call 2 to get another 40 books ::::::::::
+function bookApiCall2(title, genre, genre2) {
+  console.log("Game title:", title, "    Game genre:", genre);
+  const googleBooksApi = `https://www.googleapis.com/books/v1/volumes?key=${googleBooksKey}&orderBy=relevance&projection=full&startIndex=41&orderBy=newest&printType=all&maxResults=40&q=(${genre}, ${genre2}))`;
+
+  // Clear previous booksArray content
+  // booksArray = [];
 
   fetch(googleBooksApi)
     .then(function (response) {
@@ -106,6 +147,7 @@ function bookApiCall(title, genre, genre2) {
       buildBooksCategories();
       bookDisplayLimit();
     });
+  console.log(booksArray);
 }
 
 function shuffleArray(array) {
