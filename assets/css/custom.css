@@ -12,6 +12,10 @@ body {
     width: 75%;
 }
 
+.search-container h2 {
+    color:#252525;
+}
+
 .button {
     background-color:#383737;
     border-color: #383737;
@@ -36,7 +40,7 @@ body {
 }
 
 .search-container {
-    border: solid 3px hsl(0, 1%, 22%);
+    border: double 5px hsl(0, 1%, 22%);
     border-radius: 0.25rem;
     box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);
     color: #4a4a4a;
