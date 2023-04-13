@@ -62,7 +62,7 @@ function fetchGameData(gameTitle) {
 //::::::::::: 1. Get necessary game field data ::::::::::::::::
 //::::::::::: 2. and post game image on website :::::::::::::::
 function extractGameData(gameObject) {
-  // Container where the game image will be appended
+  // Container where the game image will be appended top right corner of recs-page
   const gameImageContainer = document.querySelector("#game-img-container");
 
   // Clear the previous image from the gameImageContainer
@@ -85,7 +85,13 @@ function extractGameData(gameObject) {
   gameImage.src = gameBackgroundImg;
   gameImage.width = 400;
 
-  gameImageContainer.appendChild(gameImage);
+  const gameCover = `
+  <h1 class="game-title">${gameName}</h1>
+  <img src=${gameObject.results[0].background_image} data-title="${gameName}" alt="${gameName} cover image"></img>
+  `;
+
+  // gameImageContainer.appendChild(gameCover);
+  gameImageContainer.innerHTML = gameCover;
 
   // Call to the function that makes the books API call
   bookApiCall1(gameName, gameGenre1, gameGenre2);
@@ -199,7 +205,7 @@ function displayBook(booksArray, number) {
   // Creating div to hold the books suggestions
   const bookDiv = document.createElement("div");
   bookDiv.setAttribute("style", "display: inline-block");
-  bookDiv.setAttribute("class", "me-2 col-4");
+  bookDiv.setAttribute("class", "me-2 col-4 book-rec");
 
   // Instead of creating elements one by one,
   // create a string literal to hold all elements needed
