@@ -86,7 +86,10 @@ function extractGameData(gameObject) {
 function bookApiCall(title, genre, genre2) {
   console.log("Game title:", title, "    Game genre:", genre);
   const googleBooksApi = `https://www.googleapis.com/books/v1/volumes?key=${googleBooksKey}&orderBy=relevance&projection=full&printType=all&maxResults=40&q=(${genre}, ${genre2}))`;
+
+  // clear previous booksArray content
   booksArray = [];
+
   fetch(googleBooksApi)
     .then(function (response) {
       const data = response.json();
@@ -94,7 +97,7 @@ function bookApiCall(title, genre, genre2) {
     })
     .then(function (data) {
       // console.log(data);
-      // only add books that have a category association
+      // only add books that have a category, image and description
       data.items.forEach((item) => {
         if (
           item.volumeInfo.categories &&
@@ -105,6 +108,7 @@ function bookApiCall(title, genre, genre2) {
         }
       });
       // console.log("Books array:", booksArray);
+      // clear previous dropdown items
       categoryMenu.innerHTML = "";
       booksCategories = new Set([]);
       buildBooksCategories();
@@ -131,7 +135,7 @@ function bookDisplayLimit() {
 function displayBook(booksArray, number) {
   // console.log("In display book:", booksArray, "Number: ", number);
 
-  // get book image link
+  // get book image link, title and description
   const bookImgLink = booksArray.volumeInfo.imageLinks.thumbnail;
   const bookTitle = String(booksArray.volumeInfo.title);
   const bookDescription = String(booksArray.volumeInfo.description);
@@ -154,6 +158,7 @@ function displayBook(booksArray, number) {
   // add event listener to book image
   const bookImg = bookDiv.querySelector("img");
   bookImg.addEventListener("click", function () {
+    // todo: instead of console log this info goes to the modal
     console.log(`Title: ${bookTitle}`);
     console.log(`Description: ${bookDescription}`);
     console.log(`Info Link: ${bookInfoLink}`);
@@ -161,18 +166,21 @@ function displayBook(booksArray, number) {
 
   // append book inside the book suggestion row
   const cardBody = document.querySelector("#card" + (number + 1));
+
+  // clear previous book image then add the new one
   cardBody.innerHTML = "";
   cardBody.appendChild(bookDiv);
 }
 
 //::::::::::: populate dropdown ::::::::::::::::
 function populateDropdown() {
+  // add the first dropdown element which will be "Select category"
   const selectCategory = document.createElement("option");
   selectCategory.textContent = "Select category";
   categoryMenu.appendChild(selectCategory);
 
   booksCategories.forEach((category) => {
-    // select categories container
+    // create a category element and add a class and data- attributes
     const div = document.createElement("option");
     div.setAttribute("class", "dropdown-item");
     div.dataset.category = `${category}`;
@@ -195,25 +203,27 @@ categoryMenu.addEventListener("change", function () {
   // loop through booksArray to find 3 books with the selected category
   for (let i = 0; i < booksArray.length; i++) {
     const categories = booksArray[i].volumeInfo.categories;
+
+    // if the categories key exits and includes the selected category
+    // add the book to the booksWithCategory array
     if (categories && categories.includes(selectedCategory)) {
       booksWithCategory.push(booksArray[i]);
-      // displayBook(booksWithCategory[0], i);
-      // console.log("in category search:", booksArray[i]);
       count++;
     }
+    // if 3 books have been selected break out of the loop
     if (count === 3) {
       break;
     }
   }
 
-  // console log the 3 books with the selected category
-  // console.log(`Books with category "${selectedCategory}":`);
   clearCardBody();
   for (let i = 0; i < booksWithCategory.length; i++) {
     displayBook(booksWithCategory[i], i);
   }
 });
 
+// clear all cards when a new category is selected so the images
+// don't display next to each other
 function clearCardBody() {
   for (let i = 1; i < 4; i++) {
     const cardBody = document.querySelector("#card" + i);
