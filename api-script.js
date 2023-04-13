@@ -13,6 +13,8 @@ const googleBooksKey = "AIzaSyAxqjUh8dmM18Wp0Vs0PdaJ_rMbTt6QUdo";
 const searchButton = document.querySelector("#search-btn");
 searchButton.addEventListener("click", function (e) {
   e.preventDefault();
+
+  clearCardBody();
   const userInput = document.querySelector("#user-search-input").value;
   fetchGameData(userInput);
 });
@@ -23,10 +25,11 @@ function buildBooksCategories() {
     const bookCategory = book.volumeInfo.categories[0];
     booksCategories.add(bookCategory);
   });
+  console.log("Books categories:", booksCategories);
   populateDropdown();
 }
-console.log(booksArray);
-console.log(booksCategories); //TO BE REMOVED LATER
+// console.log(booksArray);
+// console.log(booksCategories); //TO BE REMOVED LATER
 
 //::::::::::: make call to RAWG API ::::::::::::::::
 function fetchGameData(gameTitle) {
@@ -54,13 +57,16 @@ function extractGameData(gameObject) {
   // console.log(gameObject.results[0]);
 
   const gameName = gameObject.results[0].name;
-
+  let gameGenre1;
+  let gameGenre2;
   // some games only have 1 genre instead of 2
   if (gameObject.results[0].genres.length === 2) {
-    const gameGenre1 = gameObject.results[0].genres[0].slug;
-    const gameGenre2 = gameObject.results[0].genres[1].slug;
+    gameGenre1 = gameObject.results[0].genres[0].slug;
+    gameGenre2 = gameObject.results[0].genres[1].slug;
+    // console.log("2 genres", gameGenre1, gameGenre2);
   } else {
-    const gameGenre1 = gameObject.results[0].genres[0].slug;
+    gameGenre1 = gameObject.results[0].genres[0].slug;
+    // console.log("1 genre", gameGenre1);
   }
 
   // game image link and img element creation
@@ -72,13 +78,15 @@ function extractGameData(gameObject) {
   gameImageContainer.appendChild(gameImage);
 
   // call to the function that make the books API call
-  bookApiCall(gameName);
+  // bookApiCall(gameName);
+  bookApiCall(gameName, gameGenre1);
 }
 
 //::::::::::: make call to GoogleBooks API ::::::::::::::::
-function bookApiCall(title) {
-  console.log("Game title:", title);
-  const googleBooksApi = `https://www.googleapis.com/books/v1/volumes?key=${googleBooksKey}&orderBy=relevance&projection=full&maxResults=40&q=${title}`;
+function bookApiCall(title, genre) {
+  console.log("Game title:", title, "Game genre:", genre);
+  const googleBooksApi = `https://www.googleapis.com/books/v1/volumes?key=${googleBooksKey}&orderBy=relevance&projection=full&printType=all&maxResults=40&q=${genre}+subject:(games, adventure, computers)`;
+  booksArray = [];
   fetch(googleBooksApi)
     .then(function (response) {
       const data = response.json();
@@ -92,6 +100,9 @@ function bookApiCall(title) {
           booksArray.push(item);
         }
       });
+      console.log("Books array:", booksArray);
+      categoryMenu.innerHTML = "";
+      booksCategories = new Set([]);
       buildBooksCategories();
       bookDisplayLimit();
     });
@@ -114,14 +125,14 @@ function bookDisplayLimit() {
 
 //::::::::::: display book ::::::::::::::::
 function displayBook(booksArray, number) {
-  console.log("In display book:", booksArray, "Number: ", number);
+  // console.log("In display book:", booksArray, "Number: ", number);
 
   // get book image link
   const bookImgLink = booksArray.volumeInfo.imageLinks.thumbnail;
   const bookTitle = String(booksArray.volumeInfo.title);
   const bookDescription = String(booksArray.volumeInfo.description);
   const bookInfoLink = String(booksArray.volumeInfo.infoLink);
-  console.log("Book title:", bookTitle);
+  // console.log("Book title:", bookTitle);
 
   // creating div to hold the books suggestions
   const bookDiv = document.createElement("div");
@@ -152,7 +163,10 @@ function displayBook(booksArray, number) {
 
 //::::::::::: populate dropdown ::::::::::::::::
 function populateDropdown() {
-  // const categoryMenu = document.querySelector("#category-menu");
+  const selectCategory = document.createElement("option");
+  selectCategory.textContent = "Select category";
+  categoryMenu.appendChild(selectCategory);
+
   booksCategories.forEach((category) => {
     // select categories container
     const div = document.createElement("option");
@@ -190,11 +204,15 @@ categoryMenu.addEventListener("change", function () {
 
   // console log the 3 books with the selected category
   // console.log(`Books with category "${selectedCategory}":`);
-  for (let i = 1; i < 4; i++) {
-    const cardBody = document.querySelector("#card" + i);
-    cardBody.innerHTML = "";
-  }
+  clearCardBody();
   for (let i = 0; i < booksWithCategory.length; i++) {
     displayBook(booksWithCategory[i], i);
   }
 });
+
+function clearCardBody() {
+  for (let i = 1; i < 4; i++) {
+    const cardBody = document.querySelector("#card" + i);
+    cardBody.innerHTML = "";
+  }
+}
