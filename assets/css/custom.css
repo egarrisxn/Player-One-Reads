@@ -16,16 +16,23 @@ body {
     background-color:#383737;
     border-color: #383737;
     color: white;
+    padding: 0px 30px;
 }
-
+ 
 .button:hover {
     border-color: #252525;
+    background-color:#252525;
     color: #e5b23d;
 }
 
 .card {
     background-color: #383737;
     color: #ffffff;
+}
+
+.book-rec:hover {
+    border-color: #252525;
+    background-color:#252525;
 }
 
 .search-container {
