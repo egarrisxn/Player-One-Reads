@@ -21,6 +21,8 @@ body {
     border-color: #383737;
     color: white;
     padding: 0px 30px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
 }
  
 .button:hover {
