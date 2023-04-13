@@ -13,6 +13,15 @@ const googleBooksKey = "AIzaSyAxqjUh8dmM18Wp0Vs0PdaJ_rMbTt6QUdo";
 function goToPage() {
   window.location.href = "./recs-page.html";
 }
+loadPreviousSearch();
+
+function loadPreviousSearch() {
+  const lastSearch = JSON.parse(localStorage.getItem("lastBookSearched"));
+  if (lastSearch !== null) {
+    console.log(lastSearch);
+    fetchGameData(lastSearch);
+  }
+}
 
 //::::::::::: Search button event listener ::::::::::::::::
 const searchButton = document.querySelector("#search-btn");
@@ -21,6 +30,8 @@ searchButton.addEventListener("click", function (e) {
 
   clearCardBody();
   const userInput = document.querySelector("#user-search-input").value;
+  // localStorage.clear();
+  localStorage.setItem("lastBookSearched", JSON.stringify(userInput));
   fetchGameData(userInput);
 });
 
