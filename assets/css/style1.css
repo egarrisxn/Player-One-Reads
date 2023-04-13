@@ -1,3 +1,5 @@
+
+
 .navbar {
     background-color: #252525;
 }
@@ -20,18 +22,13 @@ body {
     line-height: 1;
 }
 
-.column {
+.columns {
     font-size: 26px;
     text-shadow: 2px 2px 5px gray;
-    display: flex;
-    flex-direction: column;
+    padding: 100px 0;
     justify-content: center;
-    align-items: center;
-    padding-top: 115px;
-    padding-left: 250px;
-    padding-right: 0px;
-    padding-bottom: 0px;
 }
+
 
 button {
     appearance: auto;
@@ -72,6 +69,18 @@ p {
 .hero {
     max-width: 100%;
     max-height: 100%;
-    margin-right: 380px;
-    z-index: +1;
 }
+
+
+.columns.is-6 {
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+}
+  
+  .column.is-3:first-child {
+    order: 2;
+  }
+  
+  .column.is-3:last-child {
+    order: 1;
+  }

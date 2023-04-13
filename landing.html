@@ -37,23 +37,23 @@
 
 
     <main style="display: flex;">
-        <section class="about-start">
-            <div class="columns is-8 is-flex">
-                <div class="column">
-                    <!--First column-->
-                    <!--!ADDED /IMAGES/ IN SRC-->
-                    <img class="p-logo" src="./assets/images/logoideayellow.png">
-                    <p>delivers reading recommendations based on your gaming habits</p>
-                    <!--!ADDED ID LANDING BUTTON-->
-                    <button class="button" id="landing-btn" onclick="goToPage()">Click here to Start!</button>
-                </div>
-                <div class="column">
-                    <!-- Second column -->
-                    <img class="hero" src="./assets/book-png-25696.png">
-                </div>
+        <div class="columns is-6">
+            <div class="column is-3 is-flex-direction-wrap-reverse">
+                <!-- Second column -->
+                <img class="hero" src="./assets/book-png-25696.png">
+            </div>
+            <div class="column is-3 is-flex-direction-wrap-reverse">
+                <!--First column-->
+                <!--!ADDED /IMAGES IN SRC-->
+                <img class="p-logo" src="./assets/images/logoideayellow.png">
+                <p>delivers reading recommendations based on your gaming habits</p>
+                <!--!ADDED ID LANDING BUTTON-->
+                <button class="button" id="landing-btn" onclick="goToPage()">Click here to Start!</button>
+            </div>
+        </div>
     </main>
     <!--!ADDED JS SCRIPT-->
     <script src="./api-script.js"></script>
-</body>
+    </body>
 
 </html>
