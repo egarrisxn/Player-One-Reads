@@ -102,9 +102,17 @@ function bookApiCall(title, genre, genre2) {
       // Clear previous dropdown items
       categoryMenu.innerHTML = "";
       booksCategories = new Set([]);
+      shuffleArray(booksArray); // <== might need to remove
       buildBooksCategories();
       bookDisplayLimit();
     });
+}
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
 }
 
 //::::::::::: Limit book selection ::::::::::::::::
