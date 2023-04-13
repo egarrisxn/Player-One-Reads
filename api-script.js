@@ -25,11 +25,8 @@ function buildBooksCategories() {
     const bookCategory = book.volumeInfo.categories[0];
     booksCategories.add(bookCategory);
   });
-  // console.log("Books categories:", booksCategories);
   populateDropdown();
 }
-// console.log(booksArray);
-// console.log(booksCategories); //TO BE REMOVED LATER
 
 //::::::::::: Make call to RAWG API ::::::::::::::::
 function fetchGameData(gameTitle) {
@@ -54,7 +51,6 @@ function extractGameData(gameObject) {
 
   // Clear the previous image from the gameImageContainer
   gameImageContainer.innerHTML = "";
-  // console.log(gameObject.results[0]);
 
   const gameName = gameObject.results[0].name;
   let gameGenre1;
@@ -63,10 +59,8 @@ function extractGameData(gameObject) {
   if (gameObject.results[0].genres.length === 2) {
     gameGenre1 = gameObject.results[0].genres[0].slug;
     gameGenre2 = gameObject.results[0].genres[1].slug;
-    // console.log("2 genres", gameGenre1, gameGenre2);
   } else {
     gameGenre1 = gameObject.results[0].genres[0].slug;
-    // console.log("1 genre", gameGenre1);
   }
 
   // Game image link and img element creation
@@ -95,7 +89,6 @@ function bookApiCall(title, genre, genre2) {
       return data;
     })
     .then(function (data) {
-      // console.log(data);
       // Only add books that have a category, image and description
       data.items.forEach((item) => {
         if (
@@ -106,7 +99,6 @@ function bookApiCall(title, genre, genre2) {
           booksArray.push(item);
         }
       });
-      // console.log("Books array:", booksArray);
       // Clear previous dropdown items
       categoryMenu.innerHTML = "";
       booksCategories = new Set([]);
