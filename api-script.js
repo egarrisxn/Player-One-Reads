@@ -131,9 +131,6 @@ function bookApiCall1(title, genre, genre2) {
       // Clear previous dropdown items
       categoryMenu.innerHTML = "";
       booksCategories = new Set([]);
-      // shuffleArray(booksArray); // <== might need to remove
-      // buildBooksCategories();
-      // bookDisplayLimit();
       bookApiCall2(title, genre, genre2);
     });
 }
@@ -142,9 +139,6 @@ function bookApiCall1(title, genre, genre2) {
 function bookApiCall2(title, genre, genre2) {
   console.log("Game title:", title, "    Game genre:", genre);
   const googleBooksApi = `https://www.googleapis.com/books/v1/volumes?key=${googleBooksKey}&orderBy=relevance&projection=full&startIndex=41&orderBy=newest&printType=all&maxResults=40&q=(${genre}, ${genre2}))`;
-
-  // Clear previous booksArray content
-  // booksArray = [];
 
   fetch(googleBooksApi)
     .then(function (response) {
@@ -165,7 +159,7 @@ function bookApiCall2(title, genre, genre2) {
       // Clear previous dropdown items
       categoryMenu.innerHTML = "";
       booksCategories = new Set([]);
-      shuffleArray(booksArray); // <== might need to remove
+      shuffleArray(booksArray);
       buildBooksCategories();
       bookDisplayLimit();
     });
