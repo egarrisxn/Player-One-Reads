@@ -12,14 +12,16 @@
   <link rel="stylesheet" href="./assets/css/custom.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@300&family=Play&family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <script src="./api-script.js" defer></script>
 </head>
 
 <body>
+
+  <!-- Navigation -->
   <header>
     <nav class="navbar" role="navigation" aria-label="main navigation">
-      <!--! :::: Our logo and link to homepage will replace this :::: -->
       <div class="navbar-brand">
         <a class="navbar-item p-0 m-3" href="./landing.html">
           <img src="./assets/images/logoideayellow.png">
@@ -36,8 +38,8 @@
 
   <main class="is-fullheight columns is-vccenter is-11 is-flex-direction-column p-5">
     <section class="columns search-game-summary is-flex is-justify-content-center m-6">
-      <!--! :::: SEARCH FIELD :::: -->
 
+      <!-- :::: SEARCH FIELD :::: -->
       <div class="search-container field column is-5 m-0 mr-2">
         <form class="control">
           <h2>Enter Video Game Below</h2>
@@ -48,7 +50,7 @@
           </div>
         </form>
 
-        <!-- Luis Dropdown test -->
+        <!-- Category Selection -->
         <div class="field">
           <label class="label">Select Option</label>
           <div class="control">
@@ -61,9 +63,8 @@
         </div>
       </div>
 
-      <!--! :::: SEARCHED VIDEO GAME :::: -->
-      <!-- Hidden until searched -->
-      <div class="card column is-5">
+      <!-- :::: SEARCHED VIDEO GAME :::: -->
+      <div class="game-container card column is-5">
         <div class="card-content">
           <div id="game-img-container" class="content game-info">
           </div>
@@ -72,17 +73,23 @@
     </section>
 
     <section id="book-suggestion-row" class="columns is-flex is-justify-content-space-evenly">
-      <!--! :::: BOOK RECOMMENDATIONS :::: -->
+      <!-- :::: BOOK RECOMMENDATIONS :::: -->
       <div class="column is-flex is-justify-content-center">
-        <!-- ! added id's to each card' -->
-        <div id="card1" class="book-rec card column is-2 m-3">
-        
+        <!--  Book recommendations appended here-->
+        <div class="book-rec card column is-2 m-3">
+        <div id="card1">
+
         </div>
-        <div id="card2" class="book-rec card column is-2 m-3">
-          
         </div>
-        <div id="card3" class="book-rec card column is-2 m-3">
-          
+        <div class="book-rec card column is-2 m-3">
+          <div id="card2">
+
+          </div>
+        </div>
+        <div class="book-rec card column is-2 m-3">
+          <div id="card3">
+
+          </div>
         </div>
 
       </div>
