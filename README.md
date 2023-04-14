@@ -14,7 +14,7 @@ This is a simple web application that generates book suggestions based upon the 
 
 ![screenshot](/assets/images/screenshot2.png)
 ## Website
-[Player One Reads](<website link goes here>)
+[Player One Reads](https://egarrisxn.github.io/player-one-reads/)
 
 ## Technologies Used
 
