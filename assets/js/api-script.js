@@ -88,7 +88,7 @@ function extractGameData(gameObject) {
   // ! Game cover element on top right of the recs-page             might want to change the width of the cover ⤵
   const gameCover = `
   <h1 class="game-title">${gameName}</h1>
-  <img src=${gameObject.results[0].background_image} data-title="${gameName}" alt="${gameName} cover image" width="400"></img>
+  <img src=${gameObject.results[0].background_image} data-title="${gameName}" alt="${gameName} cover image"></img>
   `;
 
   // gameImageContainer.appendChild(gameCover);
@@ -190,6 +190,7 @@ function bookDisplayLimit() {
 }
 
 //::::::::::: Display book ::::::::::::::::
+
 function displayBook(booksArray, number) {
   // Get book image link, title and description
   const bookImgLink = booksArray.volumeInfo.imageLinks.thumbnail;
@@ -197,6 +198,14 @@ function displayBook(booksArray, number) {
   const bookDescription = String(booksArray.volumeInfo.description);
   const bookInfoLink = String(booksArray.volumeInfo.infoLink);
 
+  // ! create on demand card
+  const bookCardContainer = document.createElement("div");
+  bookCardContainer.setAttribute("class", "book-rec card column is-2 m-3");
+  bookCardContainer.setAttribute("id", `card${number + 1}`);
+
+  const bookSuggestionCard = document.querySelector("#book-suggestion-card");
+  bookSuggestionCard.appendChild(bookCardContainer);
+  //!:::::::::::::::::::::::::::::::::::::::::::::::::::::
   // Creating div to hold the books suggestions
   const bookDiv = document.createElement("div");
   bookDiv.setAttribute("style", "display: inline-block");
@@ -234,11 +243,13 @@ function displayBook(booksArray, number) {
   });
 
   // Append book inside the book suggestion row
+  // const cardBody = document.querySelector("#card" + (number + 1));
   const cardBody = document.querySelector("#card" + (number + 1));
 
   // Clear previous book image then add the new one
-  cardBody.innerHTML = "";
-  cardBody.appendChild(bookDiv);
+  // cardBody.innerHTML = "";
+  // cardBody.appendChild(bookDiv);
+  bookCardContainer.appendChild(bookDiv);
 }
 
 //::::::::::: Populate dropdown ::::::::::::::::
@@ -285,7 +296,9 @@ categoryMenu.addEventListener("change", function () {
     }
   }
 
-  clearCardBody();
+  // clearCardBody();
+  const bookSuggestionCard = document.querySelector("#book-suggestion-card");
+  bookSuggestionCard.innerHTML = "";
   for (let i = 0; i < booksWithCategory.length; i++) {
     displayBook(booksWithCategory[i], i);
   }
