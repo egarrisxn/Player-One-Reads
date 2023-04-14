@@ -335,7 +335,7 @@ categoryMenu.addEventListener("change", function () {
       break;
     }
   }
-
+  // clear previous suggestions
   const clearSuggestions = document.querySelector("#book-suggestion-card");
   clearSuggestions.innerHTML = "";
   for (let i = 0; i < booksWithCategory.length; i++) {
