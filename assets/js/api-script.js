@@ -5,16 +5,16 @@ let booksData;
 let booksArray = [];
 let booksCategories = new Set([]);
 const categoryMenu = document.querySelector("#category-menu");
-//::::::::::::: API Keys ::::::::::::::::
+
+//::::::::::::::: API Keys :::::::::::::::::
 const rawgApiKey = "cc02a6786cd34fc58a69576e666470c0";
 const googleBooksKey = "AIzaSyAxqjUh8dmM18Wp0Vs0PdaJ_rMbTt6QUdo";
 
-//!::::::ADDED CLICK FOR LANDING PAGE::::::::::
-function goToPage() {
-  window.location.href = "./recs-page.html";
-}
-loadPreviousSearch();
+//::::::::::::: Start button on the first page :::::::::::::::
 
+
+//:::::::::::: Prompts previous search history *if any* :::::::::::::
+loadPreviousSearch();
 function loadPreviousSearch() {
   const lastSearch = JSON.parse(localStorage.getItem("lastBookSearched"));
   if (lastSearch !== null) {
