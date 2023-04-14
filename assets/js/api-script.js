@@ -196,12 +196,17 @@ function displayBook(booksArray, number) {
   const bookTitle = String(booksArray.volumeInfo.title);
   const bookDescription = String(booksArray.volumeInfo.description);
   const bookInfoLink = String(booksArray.volumeInfo.infoLink);
-
+  // ! create on demand card
+  const bookCardContainer = document.createElement("div");
+  bookCardContainer.setAttribute("class", "book-rec card column is-2 m-3");
+  bookCardContainer.setAttribute("id", `card${number + 1}`);
+  const bookSuggestionCard = document.querySelector("#book-suggestion-card");
+  bookSuggestionCard.appendChild(bookCardContainer);
+  //!:::::::::::::::::::::::::::::::::::::::::::::::::::::
   // Creating div to hold the books suggestions
   const bookDiv = document.createElement("div");
   bookDiv.setAttribute("style", "display: inline-block");
   bookDiv.setAttribute("class", "me-2 col-4 book-rec");
-
   // Instead of creating elements one by one,
   // create a string literal to hold all elements needed
   bookDiv.innerHTML = `
@@ -209,16 +214,13 @@ function displayBook(booksArray, number) {
   <p>${booksArray.volumeInfo.title}</p>
   <p>Category: ${booksArray.volumeInfo.categories}</p>
   `;
-
   // Add event listener to book image
   const bookImg = bookDiv.querySelector("img");
-
   bookImg.addEventListener("click", function () {
     // When a book image is clicked, the class is-active will be
     // added to the modal which will launch the modal
     const modal = document.querySelector("#modal-js");
     modal.classList.add("is-active");
-
     // HTML tags to add content to the model. The modal will
     // display the book title, description and google link
     const modalContent = `
@@ -227,19 +229,68 @@ function displayBook(booksArray, number) {
     <br>
     <a href=${bookInfoLink} target="_blank">${bookInfoLink}</a>
     `;
-
     // Add the content to the modal card
     const modalCardItems = document.querySelector("#modal-card-items");
     modalCardItems.innerHTML = modalContent;
   });
-
   // Append book inside the book suggestion row
+  // const cardBody = document.querySelector("#card" + (number + 1));
   const cardBody = document.querySelector("#card" + (number + 1));
-
   // Clear previous book image then add the new one
-  cardBody.innerHTML = "";
-  cardBody.appendChild(bookDiv);
+  // cardBody.innerHTML = "";
+  // cardBody.appendChild(bookDiv);
+  bookCardContainer.appendChild(bookDiv);
 }
+// function displayBook(booksArray, number) {
+//   // Get book image link, title and description
+//   const bookImgLink = booksArray.volumeInfo.imageLinks.thumbnail;
+//   const bookTitle = String(booksArray.volumeInfo.title);
+//   const bookDescription = String(booksArray.volumeInfo.description);
+//   const bookInfoLink = String(booksArray.volumeInfo.infoLink);
+//
+//   // Creating div to hold the books suggestions
+//   const bookDiv = document.createElement("div");
+//   bookDiv.setAttribute("style", "display: inline-block");
+//   bookDiv.setAttribute("class", "me-2 col-4 book-rec");
+//
+//   // Instead of creating elements one by one,
+//   // create a string literal to hold all elements needed
+//   bookDiv.innerHTML = `
+//   <img src=${bookImgLink} data-title="${bookTitle}" alt="${booksArray.volumeInfo.title} cover image" class="js-modal-trigger book-image"  data-target="modal-js" width="150"></img>
+//   <p>${booksArray.volumeInfo.title}</p>
+//   <p>Category: ${booksArray.volumeInfo.categories}</p>
+//   `;
+//
+//   // Add event listener to book image
+//   const bookImg = bookDiv.querySelector("img");
+//
+//   bookImg.addEventListener("click", function () {
+//     // When a book image is clicked, the class is-active will be
+//     // added to the modal which will launch the modal
+//     const modal = document.querySelector("#modal-js");
+//     modal.classList.add("is-active");
+//
+//     // HTML tags to add content to the model. The modal will
+//     // display the book title, description and google link
+//     const modalContent = `
+//     <h2 class="title">${bookTitle}</h2>
+//     <p>${bookDescription}</p>
+//     <br>
+//     <a href=${bookInfoLink} target="_blank">${bookInfoLink}</a>
+//     `;
+//
+//     // Add the content to the modal card
+//     const modalCardItems = document.querySelector("#modal-card-items");
+//     modalCardItems.innerHTML = modalContent;
+//   });
+//
+//   // Append book inside the book suggestion row
+//   const cardBody = document.querySelector("#card" + (number + 1));
+//
+//   // Clear previous book image then add the new one
+//   cardBody.innerHTML = "";
+//   cardBody.appendChild(bookDiv);
+// }
 
 //::::::::::: Populate dropdown ::::::::::::::::
 function populateDropdown() {
@@ -285,7 +336,8 @@ categoryMenu.addEventListener("change", function () {
     }
   }
 
-  clearCardBody();
+  const clearSuggestions = document.querySelector("#book-suggestion-card");
+  clearSuggestions.innerHTML = "";
   for (let i = 0; i < booksWithCategory.length; i++) {
     displayBook(booksWithCategory[i], i);
   }
