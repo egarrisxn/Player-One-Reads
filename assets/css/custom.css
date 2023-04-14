@@ -65,6 +65,7 @@ body {
 .book-rec:hover {
     border-color: #252525;
     background-color:#252525;
+    cursor: pointer;
 }
 
 .book-rec {
