@@ -1,16 +1,21 @@
-.navbar {
-    background-color: #252525;
+.hero {
+    max-width: 100%;
+    max-height: 100%;
 }
 
-
-.section {
+header {
     background-color: #252525;
     padding: 0rem 1rem;
 
 }
 
-body {
+.navbar {
+    background-color: #252525;
+}
 
+body {
+    position: relative;
+    min-height: 100% vh;
     color: whitesmoke;
     background-color: #E09F3E;
     background-image: linear-gradient(#e5b23d, #e09f3e);
@@ -20,26 +25,15 @@ body {
     line-height: 1;
 }
 
-.column {
+.columns {
     font-size: 26px;
     text-shadow: 2px 2px 5px gray;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
     padding-top: 115px;
-    padding-left: 250px;
-    padding-right: 0px;
-    padding-bottom: 0px;
-}
-
-img {
-    height: auto;
-    max-width: 130%;
 }
 
 .button {
-    background-color: #383737;
+    background-color:#383737;
     border-color: #383737;
     color: white;
     padding: 0px 30px;
@@ -49,22 +43,27 @@ img {
 
 .button:hover {
     border-color: #252525;
-    background-color: #252525;
+    background-color:#252525;
     color: #e5b23d;
 }
 
 p {
     display: block;
-    margin-block-start: 1em;
+    margin-block-start: 0em;
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
 
-.hero {
-    max-width: 100%;
-    max-height: 100%;
-    margin-right: 380px;
-    z-index: +1;
-}
 
+.columns.is-10 {
+    justify-content: center;
+  }
+  
+  .column.is-4:first-child {
+    order: 2;
+  }
+  
+  .column.is-4:last-child {
+    order: 1;
+  }
