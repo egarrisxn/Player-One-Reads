@@ -1,6 +1,8 @@
+![screenshot](./assets/images/screenshot.png)
+
 # Player-One-Reads
 
-This is a simple web application that suggests books based on a user's video game interests. The app allows the user to search for a video game and a few book suggestions that relate to the game's will be generated. 
+This is a simple web application that generates book suggestions based upon the user's video game interests. The app works when a user inputs the title of a video game and may optionally select to narrow down results by category. The app then takes both inputs and returns three book suggestions and links to Google Books.
 
 ## Usage
 
@@ -10,6 +12,7 @@ This is a simple web application that suggests books based on a user's video gam
 - After the book suggestions appear, a dropdown list of book categories will be displayed where you'll be able to filter the result by different categories.
 - The app limits the number of book suggestions to a maximum of three. If more than three suggestions are available, the app will display only the first three. If less than three suggestions are available, the app will display all available suggestions.
 
+![screenshot](/assets/images/screenshot2.png)
 ## Website
 [Player One Reads](<website link goes here>)
 
@@ -19,6 +22,7 @@ This is a simple web application that suggests books based on a user's video gam
 - CSS
 - Bulma
 - JavaScript
+- GIMP
 - RAWG API
 - Google Books API
 

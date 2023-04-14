@@ -33,37 +33,29 @@ body {
     padding-bottom: 0px;
 }
 
-button {
-    appearance: auto;
-    writing-mode: horizontal-tb !important;
-    
-    font-size: 20px;
-    font-family:inherit;
-    text-rendering: auto;
-    color: #e5b23d;
-    letter-spacing: normal;
-    word-spacing: normal;
-    line-height: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: center;
-    align-items: flex-start;
-    cursor: pointer;
-    box-sizing: border-box;
+img {
+    height: auto;
+    max-width: 130%;
+}
+
+.button {
+    background-color: #383737;
+    border-color: #383737;
+    color: white;
+    padding: 0px 30px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+}
+
+.button:hover {
+    border-color: #252525;
     background-color: #252525;
-    margin: -1em;
-    padding: 1px 6px;
-    border-width: 2px;
-    border-style: outset;
-    border-color: buttonborder;
-    border-image: initial;
+    color: #e5b23d;
 }
 
 p {
     display: block;
-    margin-block-start: 0em;
+    margin-block-start: 1em;
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
@@ -75,3 +67,4 @@ p {
     margin-right: 380px;
     z-index: +1;
 }
+
