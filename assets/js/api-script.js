@@ -233,6 +233,7 @@ function displayBook(booksArray, number) {
     const modalCardItems = document.querySelector("#modal-card-items");
     modalCardItems.innerHTML = modalContent;
   });
+
   // Append book inside the book suggestion row
   // const cardBody = document.querySelector("#card" + (number + 1));
   const cardBody = document.querySelector("#card" + (number + 1));
@@ -336,8 +337,9 @@ categoryMenu.addEventListener("change", function () {
     }
   }
   // clear previous suggestions
-  const clearSuggestions = document.querySelector("#book-suggestion-card");
-  clearSuggestions.innerHTML = "";
+  // const clearSuggestions = document.querySelector("#book-suggestion-card");
+  // clearSuggestions.innerHTML = "";
+  clearCardBody();
   for (let i = 0; i < booksWithCategory.length; i++) {
     displayBook(booksWithCategory[i], i);
   }
@@ -346,10 +348,12 @@ categoryMenu.addEventListener("change", function () {
 // clear all cards when a new category is selected so the images
 // don't display next to each other
 function clearCardBody() {
-  for (let i = 1; i < 4; i++) {
-    const cardBody = document.querySelector("#card" + i);
-    cardBody.innerHTML = "";
-  }
+  const clearSuggestions = document.querySelector("#book-suggestion-card");
+  // for (let i = 1; i < 4; i++) {
+  //   const cardBody = document.querySelector("#card" + i);
+  //   cardBody.innerHTML = "";
+  // }
+  clearSuggestions.innerHTML = "";
 }
 
 // :::::::::::::::::::: BULMA JS MODAL CODE ::::::::::::::::::::::::::
