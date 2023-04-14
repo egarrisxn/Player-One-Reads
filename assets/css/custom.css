@@ -1,20 +1,30 @@
+* {
+    font-family: 'Play', sans-serif;
+    font-weight: 500;
+}
+
+
 body {
     background-color: #E09F3E;
     background-image: linear-gradient(#e5b23d, #e09f3e);
     color: white;
+
 }
 
 .navbar {
     background-color: #252525;
 }
 
-
 .input {
     width: 75%;
+    font-family: 'Play', sans-serif;
+    font-weight: bold;
 }
 
 .search-container h2 {
     color:#252525;
+    font-family: 'Play', sans-serif;
+    font-weight: bold;
 }
 
 .button {
@@ -49,7 +59,7 @@ body {
 
 .card {
     background-color: #383737;
-    color: #ffffff;
+     color: #ffffff;
 }
 
 .book-rec:hover {
@@ -81,6 +91,12 @@ body {
 
 .game-info img {
    border-radius: 0.25rem;
+   max-width: 75%;
+}
+
+.game-info h1 {
+    color: white;
+    text-align: center;
 }
 
 .dropdown-item {
