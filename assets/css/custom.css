@@ -122,3 +122,20 @@ body {
     align-items: center;
     text-align: center;
 }
+
+footer {
+    font-family: 'Press Start 2P', cursive;
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+  }
+  
+  footer a {
+    text-decoration: none;
+    color: whitesmoke;
+    padding-right: 3px;
+  }
+  
+  footer a:hover {
+      color: palegreen;
+  }
