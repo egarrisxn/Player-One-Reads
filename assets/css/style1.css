@@ -1,12 +1,6 @@
-.hero {
-    max-width: 100%;
-    max-height: 100%;
-}
-
 header {
     background-color: #252525;
     padding: 0rem 1rem;
-
 }
 
 .navbar {
@@ -25,12 +19,46 @@ body {
     line-height: 1;
 }
 
+footer {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    position: absolute;
+    bottom: 3px;
+    right: 2px;
+  }
+  
+  footer a {
+    text-decoration: none;
+    color: whitesmoke;
+    padding-right: 3px;
+  }
+  
+  footer a:hover {
+      color: palegreen;
+  }
+
 .columns {
     font-size: 26px;
     text-shadow: 2px 2px 5px gray;
     align-items: center;
-    padding-top: 115px;
+    padding-top: 80px;
+    padding-bottom: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
+
+
+.columns.is-10 {
+    justify-content: center;
+  }
+  
+  .column.is-4:first-child {
+    order: 2;
+  }
+  
+  .column.is-4:last-child {
+    order: 1;
+  }
 
 .button {
     background-color:#383737;
@@ -55,15 +83,7 @@ p {
     margin-inline-end: 0px;
 }
 
-
-.columns.is-10 {
-    justify-content: center;
-  }
-  
-  .column.is-4:first-child {
-    order: 2;
-  }
-  
-  .column.is-4:last-child {
-    order: 1;
-  }
+.hero {
+    max-width: 100%;
+    max-height: 100%;
+}
