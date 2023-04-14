@@ -85,9 +85,10 @@ function extractGameData(gameObject) {
   gameImage.src = gameBackgroundImg;
   gameImage.width = 400;
 
+  // ! Game cover element on top right of the recs-page             might want to change the width of the cover ⤵
   const gameCover = `
   <h1 class="game-title">${gameName}</h1>
-  <img src=${gameObject.results[0].background_image} data-title="${gameName}" alt="${gameName} cover image"></img>
+  <img src=${gameObject.results[0].background_image} data-title="${gameName}" alt="${gameName} cover image" width="400"></img>
   `;
 
   // gameImageContainer.appendChild(gameCover);
@@ -204,7 +205,7 @@ function displayBook(booksArray, number) {
   // Instead of creating elements one by one,
   // create a string literal to hold all elements needed
   bookDiv.innerHTML = `
-  <img src=${bookImgLink} data-title="${bookTitle}" alt="${booksArray.volumeInfo.title} cover image" class="js-modal-trigger" data-target="modal-js"></img>
+  <img src=${bookImgLink} data-title="${bookTitle}" alt="${booksArray.volumeInfo.title} cover image" class="js-modal-trigger book-image"  data-target="modal-js" width="150"></img>
   <p>${booksArray.volumeInfo.title}</p>
   <p>Category: ${booksArray.volumeInfo.categories}</p>
   `;
@@ -248,15 +249,15 @@ function populateDropdown() {
   categoryMenu.appendChild(selectCategory);
 
   booksCategories.forEach((category) => {
-    // Create a category element and add a class and data- attributes
+    //! Create a category element and add a class and data- attributes
     const div = document.createElement("option");
-    div.setAttribute("class", "dropdown-item");
+    // div.setAttribute("class", "dropdown-item");
     div.dataset.category = `${category}`;
 
     // Dynamically created elements
     div.innerHTML = `
-  <p>${category}</p>
-  <hr class="dropdown-divider" />`;
+    <p class="dropdown-item">${category}</p>
+    <hr>`;
 
     categoryMenu.appendChild(div);
   });
