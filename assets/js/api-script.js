@@ -71,6 +71,7 @@ function extractGameData(gameObject) {
   const gameName = gameObject.results[0].name;
   let gameGenre1;
   let gameGenre2;
+
   // Some games only have 1 genre instead of 2
   if (gameObject.results[0].genres.length === 2) {
     gameGenre1 = gameObject.results[0].genres[0].slug;
@@ -85,7 +86,6 @@ function extractGameData(gameObject) {
   gameImage.src = gameBackgroundImg;
   gameImage.width = 400;
 
-  // ! Game cover element on top right of the recs-page             might want to change the width of the cover ⤵
   const gameCover = `
   <h1 class="game-title">${gameName}</h1>
   <img src=${gameObject.results[0].background_image} data-title="${gameName}" alt="${gameName} cover image" width="400"></img>
@@ -129,6 +129,7 @@ function bookApiCall1(title, genre, genre2) {
           booksArray.push(item);
         }
       });
+
       // Clear previous dropdown items
       categoryMenu.innerHTML = "";
       booksCategories = new Set([]);
@@ -157,6 +158,7 @@ function bookApiCall2(title, genre, genre2) {
           booksArray.push(item);
         }
       });
+
       // Clear previous dropdown items
       categoryMenu.innerHTML = "";
       booksCategories = new Set([]);
@@ -164,7 +166,6 @@ function bookApiCall2(title, genre, genre2) {
       buildBooksCategories();
       bookDisplayLimit();
     });
-  console.log(booksArray);
 }
 
 function shuffleArray(array) {
@@ -196,17 +197,19 @@ function displayBook(booksArray, number) {
   const bookTitle = String(booksArray.volumeInfo.title);
   const bookDescription = String(booksArray.volumeInfo.description);
   const bookInfoLink = String(booksArray.volumeInfo.infoLink);
+
   // ! create on demand card
   const bookCardContainer = document.createElement("div");
   bookCardContainer.setAttribute("class", "book-rec card column is-2 m-3");
   bookCardContainer.setAttribute("id", `card${number + 1}`);
   const bookSuggestionCard = document.querySelector("#book-suggestion-card");
   bookSuggestionCard.appendChild(bookCardContainer);
-  //!:::::::::::::::::::::::::::::::::::::::::::::::::::::
+
   // Creating div to hold the books suggestions
   const bookDiv = document.createElement("div");
   bookDiv.setAttribute("style", "display: inline-block");
   bookDiv.setAttribute("class", "me-2 col-4 book-rec");
+
   // Instead of creating elements one by one,
   // create a string literal to hold all elements needed
   bookDiv.innerHTML = `
@@ -214,6 +217,7 @@ function displayBook(booksArray, number) {
   <p>${booksArray.volumeInfo.title}</p>
   <p>Category: ${booksArray.volumeInfo.categories}</p>
   `;
+
   // Add event listener to book image
   const bookImg = bookDiv.querySelector("img");
   bookImg.addEventListener("click", function () {
@@ -221,6 +225,7 @@ function displayBook(booksArray, number) {
     // added to the modal which will launch the modal
     const modal = document.querySelector("#modal-js");
     modal.classList.add("is-active");
+
     // HTML tags to add content to the model. The modal will
     // display the book title, description and google link
     const modalContent = `
@@ -229,69 +234,16 @@ function displayBook(booksArray, number) {
     <br>
     <a href=${bookInfoLink} target="_blank">${bookInfoLink}</a>
     `;
+
     // Add the content to the modal card
     const modalCardItems = document.querySelector("#modal-card-items");
     modalCardItems.innerHTML = modalContent;
   });
 
   // Append book inside the book suggestion row
-  // const cardBody = document.querySelector("#card" + (number + 1));
   const cardBody = document.querySelector("#card" + (number + 1));
-  // Clear previous book image then add the new one
-  // cardBody.innerHTML = "";
-  // cardBody.appendChild(bookDiv);
   bookCardContainer.appendChild(bookDiv);
 }
-// function displayBook(booksArray, number) {
-//   // Get book image link, title and description
-//   const bookImgLink = booksArray.volumeInfo.imageLinks.thumbnail;
-//   const bookTitle = String(booksArray.volumeInfo.title);
-//   const bookDescription = String(booksArray.volumeInfo.description);
-//   const bookInfoLink = String(booksArray.volumeInfo.infoLink);
-//
-//   // Creating div to hold the books suggestions
-//   const bookDiv = document.createElement("div");
-//   bookDiv.setAttribute("style", "display: inline-block");
-//   bookDiv.setAttribute("class", "me-2 col-4 book-rec");
-//
-//   // Instead of creating elements one by one,
-//   // create a string literal to hold all elements needed
-//   bookDiv.innerHTML = `
-//   <img src=${bookImgLink} data-title="${bookTitle}" alt="${booksArray.volumeInfo.title} cover image" class="js-modal-trigger book-image"  data-target="modal-js" width="150"></img>
-//   <p>${booksArray.volumeInfo.title}</p>
-//   <p>Category: ${booksArray.volumeInfo.categories}</p>
-//   `;
-//
-//   // Add event listener to book image
-//   const bookImg = bookDiv.querySelector("img");
-//
-//   bookImg.addEventListener("click", function () {
-//     // When a book image is clicked, the class is-active will be
-//     // added to the modal which will launch the modal
-//     const modal = document.querySelector("#modal-js");
-//     modal.classList.add("is-active");
-//
-//     // HTML tags to add content to the model. The modal will
-//     // display the book title, description and google link
-//     const modalContent = `
-//     <h2 class="title">${bookTitle}</h2>
-//     <p>${bookDescription}</p>
-//     <br>
-//     <a href=${bookInfoLink} target="_blank">${bookInfoLink}</a>
-//     `;
-//
-//     // Add the content to the modal card
-//     const modalCardItems = document.querySelector("#modal-card-items");
-//     modalCardItems.innerHTML = modalContent;
-//   });
-//
-//   // Append book inside the book suggestion row
-//   const cardBody = document.querySelector("#card" + (number + 1));
-//
-//   // Clear previous book image then add the new one
-//   cardBody.innerHTML = "";
-//   cardBody.appendChild(bookDiv);
-// }
 
 //::::::::::: Populate dropdown ::::::::::::::::
 function populateDropdown() {
@@ -303,7 +255,6 @@ function populateDropdown() {
   booksCategories.forEach((category) => {
     //! Create a category element and add a class and data- attributes
     const div = document.createElement("option");
-    // div.setAttribute("class", "dropdown-item");
     div.dataset.category = `${category}`;
 
     // Dynamically created elements
@@ -331,14 +282,14 @@ categoryMenu.addEventListener("change", function () {
       booksWithCategory.push(booksArray[i]);
       count++;
     }
+
     // If 3 books have been selected break out of the loop
     if (count === 3) {
       break;
     }
   }
+
   // clear previous suggestions
-  // const clearSuggestions = document.querySelector("#book-suggestion-card");
-  // clearSuggestions.innerHTML = "";
   clearCardBody();
   for (let i = 0; i < booksWithCategory.length; i++) {
     displayBook(booksWithCategory[i], i);
@@ -349,10 +300,6 @@ categoryMenu.addEventListener("change", function () {
 // don't display next to each other
 function clearCardBody() {
   const clearSuggestions = document.querySelector("#book-suggestion-card");
-  // for (let i = 1; i < 4; i++) {
-  //   const cardBody = document.querySelector("#card" + i);
-  //   cardBody.innerHTML = "";
-  // }
   clearSuggestions.innerHTML = "";
 }
 
