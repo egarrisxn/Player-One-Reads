@@ -121,6 +121,7 @@ body {
     text-align: center;
 }
 
+/*This changes the background color of the books when sized smaller*/
 @media screen and (max-width:768px) {
     .book-rec {
         background: none;
