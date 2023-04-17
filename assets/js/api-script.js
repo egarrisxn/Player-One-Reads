@@ -200,7 +200,7 @@ function displayBook(booksArray, number) {
 
   // ! create on demand card
   const bookCardContainer = document.createElement("div");
-  bookCardContainer.setAttribute("class", "book-rec card column is-2 m-3");
+  bookCardContainer.setAttribute("class", "book-rec card column is-3 m-4");
   bookCardContainer.setAttribute("id", `card${number + 1}`);
   const bookSuggestionCard = document.querySelector("#book-suggestion-card");
   bookSuggestionCard.appendChild(bookCardContainer);
@@ -208,7 +208,7 @@ function displayBook(booksArray, number) {
   // Creating div to hold the books suggestions
   const bookDiv = document.createElement("div");
   bookDiv.setAttribute("style", "display: inline-block");
-  bookDiv.setAttribute("class", "me-2 col-4 book-rec");
+  bookDiv.setAttribute("class", "m-4 book-rec");
 
   // Instead of creating elements one by one,
   // create a string literal to hold all elements needed

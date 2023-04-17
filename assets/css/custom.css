@@ -117,8 +117,16 @@ body {
   }
 
 .book-rec {
-    display: flex;
-    flex-direction: column;
     align-items: center;
     text-align: center;
+}
+
+@media screen and (max-width:768px) {
+    .book-rec {
+        background: none;
+    }
+}
+
+#book-suggestion-card {
+    align-self: center;
 }
