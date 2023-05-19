@@ -9,7 +9,8 @@ header {
 
 body {
     position: relative;
-    min-height: 100% vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
     color: whitesmoke;
     background-color: #E09F3E;
     background-image: linear-gradient(#e5b23d, #e09f3e);
@@ -19,34 +20,39 @@ body {
     line-height: 1;
 }
 
+
 footer {
     font-family: 'Press Start 2P', cursive;
     font-size: 12px;
     position: absolute;
-    bottom: 3.0px;
+    bottom: 3px;
     right: 2px;
   }
   
-  footer a {
-    text-decoration: none;
-    color: whitesmoke;
-    padding-right: 3px;
-  }
-  
-  footer a:hover {
-      color: palegreen;
-  }
+footer a {
+  text-decoration: none;
+  color: whitesmoke;
+  padding-right: 3px;
+}
+
+footer a:hover {
+    color: palegreen;
+}
+
+.hero {
+  max-width:100%;
+  max-height: 100%;
+}
 
 .columns {
     font-size: 26px;
     text-shadow: 2px 2px 5px gray;
     align-items: center;
     padding-top: 80px;
-    padding-bottom: 50px;
     padding-left: 20px;
     padding-right: 20px;
+    padding-bottom: 50px;
 }
-
 
 .columns.is-10 {
     justify-content: center;
@@ -77,13 +83,5 @@ footer {
 
 p {
     display: block;
-    margin-block-start: 0em;
     margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-}
-
-.hero {
-    max-width: 100%;
-    max-height: 100%;
 }
