@@ -4,6 +4,9 @@
 }
 
 body {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: hidden;
     background-color: #E09F3E;
     background-image: linear-gradient(#e5b23d, #e09f3e);
     color: white;
