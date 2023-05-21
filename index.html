@@ -1,47 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="./assets/css/reset.css">
-    <link rel="stylesheet" href="./assets/css/style1.css">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <title>Player One Reads</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Player One Reads</title>
+  <link rel="stylesheet" href="./assets/css/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@300&family=Play&family=Press+Start+2P&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
-    <header>
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-                <a class="navbar-item p-0" href="./recs-page.html">
-                    <img src="./assets/images/logoideayellow.png">
-                </a>
-            </div>
-        </nav>
-    </header>
+  <header>
+    <nav class="navbar is-black" role="navigation" aria-label="main navigation">
 
-    <main class = "main is-flex-stretch">
-        <div class="columns is-10 is-flex-wrap-wrap-reverse is-justify-content-center">
-            <div class="column is-4">
-                <img class="hero" src="./assets/images/book-png-25696.png">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="./recs-page.html">
+          <img src="./assets/images/logoideayellow.png">
+        </a>
+        <!-- Hamburger menu icon (for mobile) -->
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          </a>
+      </div>
+  
+      <div id="navbarMenu" class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless">
+              Contact Us
+            </a>
+            <div class="navbar-dropdown is-right">
+              <a class="navbar-item" href="https://github.com/adamabulkheir">
+                Adam Abulkheir
+              </a>
+              <a class="navbar-item" href="https://github.com/egarrisxn">
+                Ethan Garrison
+              </a>
+              <a class="navbar-item" href="https://github.com/emilymclean94">
+                Emily McLean
+              </a>
+              <a class="navbar-item" href="https://github.com/robles1999">
+                Luis Robles
+              </a>
             </div>
-            <div class="column is-4">
-                <img class="p-logo" src="./assets/images/logoideayellow.png">
-                <p>delivers reading recommendations based on your gaming habits</p>
-                <button class="button" onclick="location.href='./recs-page.html';">Click here to Start!</button>
-            </div>
+          </div>
         </div>
-    </main>
+      </div>
+    </nav>
+  </header>
 
-    <footer>
-        <a href="https://github.com/EGARRISXN/player-one-reads">GitHub</a>
-    </footer>
-      
+  <main class = "is-fullheight is-flex-stretch p-4">
 
-    <script src="./assets/js/api-script.js"></script>
+    <div class="columns is-10 is-flex-wrap-wrap-reverse is-justify-content-center">
+      <div class="column is-4">
+        <img class="hero" src="./assets/images/book-png-25696.png">
+      </div>
+
+      <div class="column is-4">
+        <img class="p-logo" src="./assets/images/logoideayellow.png">
+        <p>delivers reading recommendations based on your gaming habits</p>
+        <button class="button" onclick="location.href='./recs-page.html';">Click here to Start!</button>
+      </div>
+    </div>
+  </main>
+
+<script src="./assets/js/api-script.js"></script>
 </body>
 
 </html>

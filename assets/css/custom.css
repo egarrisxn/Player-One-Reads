@@ -3,16 +3,37 @@
     font-weight: 500;
 }
 
-
 body {
     background-color: #E09F3E;
     background-image: linear-gradient(#e5b23d, #e09f3e);
     color: white;
-
+}
+  
+/* Custom CSS to override Bulma styles */
+.navbar.is-black .navbar-link,
+.navbar.is-black .navbar-dropdown {
+    font-family: 'Play', sans-serif;
+    font-weight: 500;
+    background-color: black;
+    color: white;
 }
 
-.navbar {
-    background-color: #252525;
+.navbar.is-black .navbar-dropdown a.navbar-item {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    background-color: black;
+    color: #E09F3E;
+}
+
+.navbar.is-black .navbar-dropdown a.navbar-item:hover {
+    color: white;
+}
+
+.navbar-dropdown, .navbar-link, .navbar-item {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 /* Search container */

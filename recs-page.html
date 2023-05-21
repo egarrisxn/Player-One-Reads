@@ -1,111 +1,120 @@
 <!DOCTYPE html>
 <html>
 
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Player One Reads</title>
+  <link rel="stylesheet" href="./assets/css/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="./assets/css/custom.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@300&family=Play&family=Press+Start+2P&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <script src="./assets/js/api-script.js" defer></script>
+</head>
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Player One Reads</title>
+<body>
+  <header>
+    <nav class="navbar is-black" role="navigation" aria-label="main navigation">
 
-    <link rel="stylesheet" href="./assets/css/reset.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="./assets/css/custom.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@300&family=Play&family=Press+Start+2P&display=swap"
-      rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <script src="./assets/js/api-script.js" defer></script>
-  </head>
-
-  <body>
-
-    <!-- Navigation -->
-    <header>
-      <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-          <a class="navbar-item p-0 m-3" href="./index.html">
-            <img src="./assets/images/logoideayellow.png">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="./index.html">
+          <img src="./assets/images/logoideayellow.png">
+        </a>
+        <!-- Hamburger menu icon (for mobile) -->
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
           </a>
-        </div>
-      </nav>
-    </header>
-
-    <main class="is-fullheight columns is-vccenter is-11 is-flex-direction-column p-4">
-
-      <section class="columns search-game-summary is-flex-wrap-wrap is-justify-content-center m-5">
-
-        <!-- :::: SEARCH FIELD :::: -->
-        <div class="search-container field column is-5 m-0 mt-3 mb-1 ml-1 mr-1">
-          <form class="control">
-            <h2>Enter Video Game Below</h2>
-            <input id="user-search-input" class="input my-3" type="text" placeholder="Call of Duty">
-            <div class="control">
-              <button id="search-btn" class="submit-btn button mb-3">Submit</button>
-
-            </div>
-          </form>
-
-          <!-- Category Selection -->
-          <div class="field">
-            <label class="label">Select Option</label>
-            <div class="control">
-              <div class="select">
-                <select id="category-menu">
-                  <!-- <option>Select category</option> -->
-                </select>
-              </div>
+      </div>
+  
+      <div id="navbarMenu" class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless">
+              Contact Us
+            </a>
+            <div class="navbar-dropdown is-right">
+              <a class="navbar-item" href="https://github.com/adamabulkheir">
+                Adam Abulkheir
+              </a>
+              <a class="navbar-item" href="https://github.com/egarrisxn">
+                Ethan Garrison
+              </a>
+              <a class="navbar-item" href="https://github.com/emilymclean94">
+                Emily McLean
+              </a>
+              <a class="navbar-item" href="https://github.com/robles1999">
+                Luis Robles
+              </a>
             </div>
           </div>
         </div>
+      </div>
+    </nav>
+  </header>
 
-        <!-- :::: SEARCHED VIDEO GAME :::: -->
-        <div class="game-container card column is-5 mt-3 mb-1 ml-1 mr-1">
-          <div class="card-content">
-            <div id="game-img-container" class="content game-info">
+  <main class="is-fullheight columns is-vccenter is-11 is-flex-direction-column p-4">
+
+    <section class="columns search-game-summary is-flex-wrap-wrap is-justify-content-center m-5">
+      <!-- :::: SEARCH FIELD :::: -->
+      <div class="search-container field column is-5 m-0 mt-3 mb-1 ml-1 mr-1">
+        <form class="control">
+          <h2>Enter Video Game Below</h2>
+          <input id="user-search-input" class="input my-3" type="text" placeholder="Call of Duty">
+          <div class="control">
+            <button id="search-btn" class="submit-btn button mb-3">Submit</button>
+          </div>
+        </form>
+        <!-- Category Selection -->
+        <div class="field">
+          <label class="label">Select Option</label>
+          <div class="control">
+            <div class="select">
+              <select id="category-menu">
+              <!-- <option>Select category</option> -->
+              </select>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section id="book-suggestion-row" class="columns m-5 is-justify-content-space-evenly">
-        <!-- :::: BOOK RECOMMENDATIONS :::: -->
-        <div id="book-suggestion-card" class="columns is-justify-content-center">
-
-          <!--  Book recommendations appended here-->
-          <!-- <div class="book-rec card column is-2 m-3">
-        <div id="card1">
-
-        </div>
-        </div>
-        <div class="book-rec card column is-2 m-3">
-          <div id="card2">
-
-          </div>
-        </div>
-        <div class="book-rec card column is-2 m-3">
-          <div id="card3">
-
-          </div>
-        </div> -->
-
-        </div>
-      </section>
-    </main>
-
-    <div id="modal-js" class="modal">
-      <div class="modal-background"></div>
-
-      <div class="modal-content">
-        <div id="modal-card-items" class="box">
-          <!-- content -->
         </div>
       </div>
 
-      <button class="modal-close is-large" aria-label="close"></button>
-    </div>
+      <!-- :::: SEARCHED VIDEO GAME :::: -->
+      <div class="game-container card column is-5 mt-3 mb-1 ml-1 mr-1">
+        <div class="card-content">
+          <div id="game-img-container" class="content game-info">
+          </div>
+        </div>
+      </div>
+    </section>
 
-  </body>
+    <section id="book-suggestion-row" class="columns m-5 is-justify-content-space-evenly">
+      <!-- :::: BOOK RECOMMENDATIONS :::: -->
+      <div id="book-suggestion-card" class="columns is-justify-content-center">
+      </div>
+    </section>
+
+  </main>
+
+<!-- :::: MODALS :::: -->
+<div id="modal-js" class="modal">
+  <div class="modal-background"></div>
+
+  <div class="modal-content">
+    <div id="modal-card-items" class="box">
+    <!-- content -->
+    </div>
+  </div>
+
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+</body>
 
 </html>
