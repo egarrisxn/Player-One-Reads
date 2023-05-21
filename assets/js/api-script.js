@@ -9,6 +9,7 @@ const categoryMenu = document.querySelector("#category-menu");
 const rawgApiKey = "cc02a6786cd34fc58a69576e666470c0";
 const googleBooksKey = "AIzaSyAxqjUh8dmM18Wp0Vs0PdaJ_rMbTt6QUdo";
 
+  //! Navbar dropdown functionality
   document.addEventListener('DOMContentLoaded', function () {
 
     // Get all "navbar-burger" elements
